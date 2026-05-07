@@ -126,15 +126,49 @@
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="about-section">
-    <div class="container about-container">
-      <div class="about-text">
-        <h2 class="section-title">About Me</h2>
-        <p>I am a multidisciplinary designer specializing in branding, digital experiences, and visual storytelling. I craft solutions that are not only beautiful but strategically sound, helping brands connect with their audiences in meaningful ways.</p>
-      </div>
-      <div class="about-image">
-        <img src="p5.png" alt="About">
+  <!-- SERVICES SECTION -->
+  <section id="about" class="services-section">
+    <div class="container">
+      <h2 class="section-title left-align">OUR SERVICES</h2>
+      <div class="services-content-wrapper">
+        <div class="services-text">
+          <p>At Project Friday, we understand that no two brands are alike. While these are our core services, each package is fully customized to suit the unique needs and vision of your brand—whether you're looking for strategic positioning, impactful campaigns or creative consulting. Our approach is flexible and collaborative, designed to evolve with your goals.</p>
+          <p class="chat-prompt">Interested in working with Project Friday? &nbsp;&nbsp;<a href="#contact" class="lets-chat">Lets Chat</a></p>
+        </div>
+        <div class="services-accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">Brand & Marketing Strategy <span class="icon">&#709;</span></button>
+            <div class="accordion-content"><p>Comprehensive strategies to elevate your brand's presence and market position.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Social Media & Digital Marketing <span class="icon">&#709;</span></button>
+            <div class="accordion-content"><p>Engaging digital campaigns that drive conversions and build communities.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Influencer Relations <span class="icon">&#709;</span></button>
+            <div class="accordion-content"><p>Connecting your brand with the right voices to amplify your message.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Content & Creative Production <span class="icon">&#709;</span></button>
+            <div class="accordion-content"><p>High-quality visuals and storytelling tailored to your brand identity.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Partnerships & Media <span class="icon">&#709;</span></button>
+            <div class="accordion-content"><p>Strategic collaborations to expand your reach and impact.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Experiential & Events <span class="icon">&#709;</span></button>
+            <div class="accordion-content"><p>Memorable real-world experiences that bring your brand to life.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Retail Marketing <span class="icon">&#709;</span></button>
+            <div class="accordion-content"><p>Optimizing in-store presence and consumer journey for maximum impact.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Styling Services <span class="icon">&#709;</span></button>
+            <div class="accordion-content"><p>Expert styling for campaigns, lookbooks, and personal brand development.</p></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -142,13 +176,56 @@
   <!-- CONTACT SECTION -->
   <section id="contact" class="contact-section">
     <div class="container contact-container">
-      <h2 class="section-title">Get in Touch</h2>
-      <p class="contact-desc">Ready to start a project? Let's build something great together.</p>
+      <h2 class="form-title">Contact Us</h2>
       <form class="contact-form">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Message" rows="5" required></textarea>
-        <button type="submit" class="submit-btn">Send Message</button>
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" placeholder="First Name" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" placeholder="Last Name" required>
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text">
+        </div>
+        <div class="form-group">
+          <label>Role/Title</label>
+          <input type="text">
+        </div>
+        <div class="form-group">
+          <label>Service of Interest</label>
+          <select>
+            <option value="" disabled selected></option>
+            <option value="brand">Brand & Marketing Strategy</option>
+            <option value="social">Social Media & Digital Marketing</option>
+            <option value="influencer">Influencer Relations</option>
+            <option value="content">Content & Creative Production</option>
+            <option value="partnerships">Partnerships & Media</option>
+            <option value="events">Experiential & Events</option>
+            <option value="retail">Retail Marketing</option>
+            <option value="styling">Styling Services</option>
+          </select>
+        </div>
+        <div class="form-group checkbox-group-container">
+          <label class="mb-label">How Did You Hear About Us?</label>
+          <div class="checkbox-group">
+            <label class="check-label"><input type="checkbox" name="source" value="Social Media"> Social Media</label>
+            <label class="check-label"><input type="checkbox" name="source" value="Web Search"> Web Search</label>
+            <label class="check-label"><input type="checkbox" name="source" value="Referral"> Referral</label>
+            <label class="check-label"><input type="checkbox" name="source" value="Other"> Other</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea placeholder="Message" rows="1" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
       </form>
     </div>
   </section>

@@ -97,15 +97,15 @@ if (form) {
     const originalText = btn.textContent;
     btn.textContent = 'Sending...';
     setTimeout(() => {
-      btn.textContent = 'Message Sent!';
-      btn.style.background = '#4CAF50';
-      btn.style.color = '#fff';
-      form.reset();
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '#fff';
-        btn.style.color = '#111';
-      }, 3000);
+        btn.textContent = 'Message Sent!';
+        btn.style.background = '#d4af37'; // gold color for success
+        btn.style.color = '#fff';
+        form.reset();
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '#111';
+          btn.style.color = '#fff';
+        }, 3000);
     }, 1500);
   });
 }
@@ -126,4 +126,26 @@ window.addEventListener('scroll', () => {
     navbar.style.boxShadow = 'none';
     navbar.querySelectorAll('a').forEach(a => a.style.color = '#fff');
   }
+});
+
+// Accordion logic
+const accordionHeaders = document.querySelectorAll('.accordion-header');
+accordionHeaders.forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    const icon = header.querySelector('.icon');
+    
+    // Toggle current
+    if (content.style.display === 'block') {
+      content.style.display = 'none';
+      icon.innerHTML = '&#709;'; // arrow down
+    } else {
+      // Close all others
+      document.querySelectorAll('.accordion-content').forEach(c => c.style.display = 'none');
+      document.querySelectorAll('.accordion-header .icon').forEach(i => i.innerHTML = '&#709;');
+      
+      content.style.display = 'block';
+      icon.innerHTML = '&#708;'; // arrow up
+    }
+  });
 });
