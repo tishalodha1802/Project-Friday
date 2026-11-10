@@ -64,7 +64,7 @@
         <p class="hero-lead">Custom websites, web apps, mobile apps, and institutional ERPs.</p>
         
         <div class="hero-actions">
-          <a href="#websites" class="key key--primary">Explore Selected Works</a>
+          <a href="#projects" class="key key--primary">Explore Selected Works</a>
           <a href="#contact" class="key key--secondary">Contact Us</a>
         </div>
       </div>
@@ -90,130 +90,119 @@
     </div>
   </section>
 
-  <!-- WEBSITES SECTION -->
-  <section id="websites" class="work-section">
+  <!-- UNIFIED PROJECTS 3D SLIDER SECTION -->
+  <section id="projects" class="work-section">
+    <div id="websites" class="section-anchor"></div>
+    <div id="webapps" class="section-anchor"></div>
+    <div id="apps" class="section-anchor"></div>
     <div class="container">
       <div class="section-head">
-        <h2>Production Websites</h2>
-        <p>Web architecture and digital brand platforms.</p>
+        <h2>Featured Projects</h2>
+        <p>Websites, web applications, and mobile platforms engineered for production.</p>
       </div>
 
-      <div class="work-grid">
-        <!-- Project Card: Metal Buildcon -->
-        <article class="work-card">
-          <div class="work-media">
-            <img src="project-metal-buildcon.jpg" alt="Metal Buildcon Structural Construction & Engineering Platform" class="work-img spotlight-img" loading="lazy">
-            <span class="work-status">Commercial Infrastructure</span>
-          </div>
-          <div class="work-body">
-            <h3>Metal Buildcon Construction</h3>
-            <p class="work-tag">General Contracting · Live Platform</p>
-            <p>Enterprise construction platform with commercial tower portfolios and subcontractor bidding pipelines.</p>
-            <div class="work-actions">
-              <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project Card: Ganpati Granites -->
-        <article class="work-card">
-          <div class="work-media">
-            <img src="project-ganpati-granites.jpg" alt="Ganpati Granites Luxury Natural Stone Platform" class="work-img spotlight-img" loading="lazy">
-            <span class="work-status">Stone Catalog</span>
-          </div>
-          <div class="work-body">
-            <h3>Ganpati Granites Luxury Portal</h3>
-            <p class="work-tag">Architectural Stone · Live System</p>
-            <p>Luxury digital catalog showcasing rare architectural granites with bespoke architect quotation workflows.</p>
-            <div class="work-actions">
-              <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- WEB APPS SECTION -->
-  <section id="webapps" class="work-section work-section--alt">
-    <div class="container">
-      <div class="section-head">
-        <h2>Intelligent Web Applications</h2>
-        <p>Algorithmic engines and secure multi-role portals.</p>
+      <!-- Category Filter Tabs -->
+      <div class="slider-tabs" role="tablist" aria-label="Filter project categories">
+        <button class="slider-tab is-active" data-filter="all" type="button" role="tab" aria-selected="true">All Works</button>
+        <button class="slider-tab" data-filter="websites" type="button" role="tab" aria-selected="false">Websites</button>
+        <button class="slider-tab" data-filter="webapps" type="button" role="tab" aria-selected="false">Web Apps</button>
+        <button class="slider-tab" data-filter="apps" type="button" role="tab" aria-selected="false">Mobile Apps</button>
       </div>
 
-      <div class="work-grid">
-        <!-- Project Card: Shree Rajput Sagai Sambandh -->
-        <article class="work-card">
-          <div class="work-media">
-            <img src="project-rajput-matrimony.jpg" alt="Shree Rajput Sagai Sambandh Matrimonial Web Application" class="work-img spotlight-img" loading="lazy">
-            <span class="work-status">Matchmaking Portal</span>
-          </div>
-          <div class="work-body">
-            <h3>Rajput Matrimony Platform</h3>
-            <p class="work-tag">Community Web App · Production Portal</p>
-            <p>Matchmaking portal featuring gotra compatibility logic, clan filtering, verified profiles, and memberships.</p>
-            <div class="work-actions">
-              <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
+      <!-- 3D Perspective Card Slider -->
+      <div class="slider-stage" id="projectSliderStage">
+        <div class="slider-track" id="projectSliderTrack">
+          <!-- Card 1: Metal Buildcon (Websites) -->
+          <article class="slider-card" data-category="websites">
+            <div class="work-media">
+              <img src="project-metal-buildcon.jpg" alt="Metal Buildcon Structural Construction Platform" class="work-img spotlight-img" loading="lazy">
+              <span class="work-status">Commercial Infrastructure</span>
             </div>
-          </div>
-        </article>
-
-        <!-- Project Card: Namankan Education Portal (namankanedu.in) -->
-        <article class="work-card">
-          <div class="work-media">
-            <img src="project-namankan.jpg" alt="Namankan Admissions and Counselling Portal namankanedu.in" class="work-img spotlight-img" loading="lazy">
-            <span class="work-status">Admissions Portal</span>
-          </div>
-          <div class="work-body">
-            <h3>Namankan Education Portal</h3>
-            <p class="work-tag">namankanedu.in · Admissions Guidance</p>
-            <p>Admissions and counselling guidance portal for NEET, engineering, and university admissions.</p>
-            <div class="work-actions">
-              <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
+            <div class="work-body">
+              <h3>Metal Buildcon Construction</h3>
+              <p class="work-tag">General Contracting · Live Platform</p>
+              <p>Enterprise construction platform with commercial tower portfolios and subcontractor bidding pipelines.</p>
+              <div class="work-actions">
+                <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
+              </div>
             </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+          </article>
 
-  <!-- APPS SECTION -->
-  <section id="apps" class="work-section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Mobile Applications</h2>
-        <p>Native-feel apps engineered for operational workflows and team communication.</p>
-      </div>
-
-      <div class="work-grid">
-        <!-- Project Card: EduNext School ERP Mobile Suite -->
-        <article class="work-card">
-          <div class="work-media">
-            <img src="school-erp-preview.jpg" alt="EduNext School ERP Mobile and Web Application" class="work-img spotlight-img" loading="lazy">
-            <span class="work-status">Campus Mobile ERP</span>
-          </div>
-          <div class="work-body">
-            <h3>EduNext School ERP Suite</h3>
-            <p class="work-tag">Campus Management · Mobile App</p>
-            <p>Campus operations suite managing fee automation, biometric attendance, and mobile portals.</p>
-            <div class="work-actions">
-              <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
+          <!-- Card 2: Ganpati Granites (Websites) -->
+          <article class="slider-card" data-category="websites">
+            <div class="work-media">
+              <img src="project-ganpati-granites.jpg" alt="Ganpati Granites Luxury Stone Portal" class="work-img spotlight-img" loading="lazy">
+              <span class="work-status">Stone Catalog</span>
             </div>
-          </div>
-        </article>
-
-        <!-- Project Card: Custom Workflow & Operations Apps -->
-        <article class="work-card work-card--highlight">
-          <div class="work-card-inner">
-            <h3>Custom Enterprise Mobile Apps</h3>
-            <p class="work-tag">iOS & Android · Workflow Automation</p>
-            <p>Cross-platform mobile applications engineered for field operations, offline reliability, and team workflows.</p>
-            <div class="work-actions">
-              <a href="#contact" class="key key--primary">Request App Scoping</a>
+            <div class="work-body">
+              <h3>Ganpati Granites Luxury Portal</h3>
+              <p class="work-tag">Architectural Stone · Live System</p>
+              <p>Luxury digital catalog showcasing rare architectural granites with bespoke quotation workflows.</p>
+              <div class="work-actions">
+                <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+
+          <!-- Card 3: Rajput Matrimony (Web Apps) -->
+          <article class="slider-card" data-category="webapps">
+            <div class="work-media">
+              <img src="project-rajput-matrimony.jpg" alt="Shree Rajput Sagai Sambandh Matrimonial Web Application" class="work-img spotlight-img" loading="lazy">
+              <span class="work-status">Matchmaking Portal</span>
+            </div>
+            <div class="work-body">
+              <h3>Rajput Matrimony Platform</h3>
+              <p class="work-tag">Community Web App · Production Portal</p>
+              <p>Matchmaking portal featuring gotra compatibility logic, clan filtering, and verified memberships.</p>
+              <div class="work-actions">
+                <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Namankan Education (Web Apps) -->
+          <article class="slider-card" data-category="webapps">
+            <div class="work-media">
+              <img src="project-namankan.jpg" alt="Namankan Admissions and Counselling Portal namankanedu.in" class="work-img spotlight-img" loading="lazy">
+              <span class="work-status">Admissions Portal</span>
+            </div>
+            <div class="work-body">
+              <h3>Namankan Education Portal</h3>
+              <p class="work-tag">namankanedu.in · Admissions Guidance</p>
+              <p>Admissions and counselling guidance portal for NEET, engineering, and university admissions.</p>
+              <div class="work-actions">
+                <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: EduNext School ERP (Apps) -->
+          <article class="slider-card" data-category="apps">
+            <div class="work-media">
+              <img src="school-erp-preview.jpg" alt="EduNext School ERP Mobile and Web Application" class="work-img spotlight-img" loading="lazy">
+              <span class="work-status">Campus Mobile ERP</span>
+            </div>
+            <div class="work-body">
+              <h3>EduNext School ERP Suite</h3>
+              <p class="work-tag">Campus Management · Mobile App</p>
+              <p>Campus operations suite managing fee automation, biometric attendance, and mobile portals.</p>
+              <div class="work-actions">
+                <a href="#contact" class="key key--secondary">Inquire Similar Project</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+          <button class="slider-arrow slider-arrow--prev" id="sliderPrev" type="button" aria-label="Previous project">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <div class="slider-dots" id="sliderDots"></div>
+          <button class="slider-arrow slider-arrow--next" id="sliderNext" type="button" aria-label="Next project">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
