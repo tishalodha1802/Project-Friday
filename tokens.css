@@ -55,6 +55,20 @@
   --rule-hair: 1px;
   --tracking-display: -0.022em;
   --display-weight: 500;
+
+  /* Notion Hero Rotating Pill Tokens (Light) */
+  --pill-mint-bg: oklch(93% 0.08 148);
+  --pill-mint-dot: oklch(62% 0.20 148);
+  --pill-mint-ink: oklch(22% 0.03 148);
+  --pill-peach-bg: oklch(92% 0.08 55);
+  --pill-peach-dot: oklch(68% 0.19 50);
+  --pill-peach-ink: oklch(25% 0.03 50);
+  --pill-dusk-bg: oklch(93% 0.07 274);
+  --pill-dusk-dot: oklch(68% 0.16 274);
+  --pill-dusk-ink: oklch(24% 0.03 274);
+  --pill-lav-bg: oklch(93% 0.07 305);
+  --pill-lav-dot: oklch(65% 0.20 305);
+  --pill-lav-ink: oklch(24% 0.03 305);
 }
 
 html[data-theme="dark"],
@@ -83,4 +97,18 @@ html[data-theme="dark"],
   --glass: oklch(22% 0.018 268 / 0.58);
   --glass-hi: inset 0 1px 0 oklch(100% 0 0 / 0.10), inset 0 0 0 1px oklch(100% 0 0 / 0.06);
   --shadow-card: 0 1px 0 oklch(100% 0 0 / 0.06) inset, 0 40px 80px -32px oklch(8% 0.02 268 / 0.7);
+
+  /* Notion Hero Rotating Pill Tokens (Dark) */
+  --pill-mint-bg: oklch(30% 0.08 148 / 0.55);
+  --pill-mint-dot: oklch(75% 0.18 148);
+  --pill-mint-ink: oklch(96% 0.01 148);
+  --pill-peach-bg: oklch(30% 0.08 50 / 0.55);
+  --pill-peach-dot: oklch(78% 0.17 50);
+  --pill-peach-ink: oklch(96% 0.01 50);
+  --pill-dusk-bg: oklch(30% 0.08 274 / 0.55);
+  --pill-dusk-dot: oklch(75% 0.16 274);
+  --pill-dusk-ink: oklch(96% 0.01 274);
+  --pill-lav-bg: oklch(30% 0.08 305 / 0.55);
+  --pill-lav-dot: oklch(76% 0.18 305);
+  --pill-lav-ink: oklch(96% 0.01 305);
 }

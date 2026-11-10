@@ -3,6 +3,41 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  // ── 0. Hero Animated Notion-Style Pill Cycling ──
+  const heroPill = document.getElementById('heroPill');
+  const heroPillWord = document.getElementById('heroPillWord');
+  
+  if (heroPill && heroPillWord) {
+    const states = [
+      { word: 'Ship', class: 'hero-pill--ship' },
+      { word: 'Create', class: 'hero-pill--create' },
+      { word: 'Build', class: 'hero-pill--build' },
+      { word: 'Scale', class: 'hero-pill--scale' }
+    ];
+    let currentIndex = 0;
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % states.length;
+      const nextState = states[currentIndex];
+
+      // Smooth exit
+      heroPillWord.style.opacity = '0';
+      heroPillWord.style.transform = 'translateY(-6px)';
+
+      setTimeout(() => {
+        states.forEach(s => heroPill.classList.remove(s.class));
+        heroPill.classList.add(nextState.class);
+        heroPillWord.textContent = nextState.word;
+        heroPillWord.style.transform = 'translateY(6px)';
+
+        requestAnimationFrame(() => {
+          heroPillWord.style.opacity = '1';
+          heroPillWord.style.transform = 'translateY(0)';
+        });
+      }, 200);
+    }, 2800);
+  }
+
   // ── 1. Services Accordion Logic ──
   const accordionHeaders = document.querySelectorAll('.accordion-header');
   

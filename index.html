@@ -61,20 +61,33 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION (Notion-style front page with cycling pill) -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>Software built for your organisation’s workflow</h1>
+        <h1 class="hero-title">
+          Where teams and<br>
+          software <span class="hero-pill hero-pill--ship" id="heroPill"><span class="hero-dot" aria-hidden="true"></span><span class="hero-pill-word" id="heroPillWord">Ship</span></span> together.
+        </h1>
         <p class="hero-lead">Custom websites, web apps, mobile apps, and institutional ERPs.</p>
         
         <div class="hero-actions">
-          <a href="#projects" class="key key--primary">Explore Selected Works</a>
+          <a href="#projects" class="key key--primary">Explore Work</a>
           <a href="#contact" class="key key--secondary">Contact Us</a>
         </div>
       </div>
 
       <div class="hero-showcase">
+        <div class="hero-peek-character" aria-hidden="true">
+          <svg width="68" height="52" viewBox="0 0 68 52" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 50 C12 24, 24 6, 42 6 C56 6, 64 18, 64 50" />
+            <path d="M26 18 Q30 16 34 18" />
+            <circle cx="30" cy="24" r="2.5" fill="currentColor" />
+            <path d="M42 18 Q46 16 50 18" />
+            <circle cx="46" cy="24" r="2.5" fill="currentColor" />
+            <path d="M38 24 L38 34 L43 34" />
+          </svg>
+        </div>
         <div class="media-frame">
           <video 
             id="heroErpVideo"
