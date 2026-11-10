@@ -813,10 +813,15 @@ section {
   width: 100%;
 }
 
-/* ── SERVICES ACCORDION ── */
+/* ── SERVICES SECTION ── */
+.services-section {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
 .services-layout {
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
+  grid-template-columns: minmax(280px, 1fr) minmax(360px, 1.4fr);
   gap: var(--gap-columns);
   align-items: start;
 }
@@ -824,83 +829,91 @@ section {
 .services-intro {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
 }
 
-.services-intro p {
-  font-size: var(--text-md);
-  color: var(--color-muted);
-  line-height: 1.6;
+@media (min-width: 60rem) {
+  .services-intro {
+    position: sticky;
+    top: 6rem;
+  }
 }
 
-.action-link {
-  color: var(--color-accent);
-  font-weight: 500;
-  text-decoration: underline;
-  align-self: flex-start;
-}
-
-.action-link:hover {
-  color: var(--color-accent-hi);
-}
-
-.services-accordion {
-  border-top: var(--rule-hair) solid var(--color-rule);
-}
-
-.accordion-item {
-  border-bottom: var(--rule-hair) solid var(--color-rule);
-}
-
-.accordion-header {
-  width: 100%;
-  background: transparent;
-  border: none;
-  padding: var(--space-lg) 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-display);
-  font-size: var(--text-md);
-  font-weight: 500;
+.services-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   color: var(--color-ink);
-  cursor: pointer;
-  text-align: left;
-  transition: color var(--dur-micro) var(--ease-out);
+  margin-bottom: var(--space-md);
 }
 
-.accordion-header span {
-  white-space: nowrap;
-}
-
-.accordion-header:hover {
-  color: var(--color-accent);
-}
-
-.accordion-header:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-}
-
-.accordion-header:active {
-  color: var(--color-accent-deep);
-}
-
-.accordion-icon {
-  font-size: var(--text-sm);
+.services-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.55;
   color: var(--color-muted);
+  max-width: 380px;
+  margin: 0;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
   transition: transform var(--dur-short) var(--ease-out);
 }
 
-.accordion-content {
-  display: none;
-  padding-bottom: var(--space-lg);
+.service-item:hover {
+  transform: translateX(4px);
 }
 
-.accordion-content p {
-  font-size: var(--text-sm);
+@media (prefers-reduced-motion: reduce) {
+  .service-item:hover {
+    transform: none;
+  }
+}
+
+.service-icon-badge {
+  inline-size: 48px;
+  block-size: 48px;
+  min-inline-size: 48px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-paper-2);
+  border: var(--rule-hair) solid var(--color-rule);
+  color: var(--color-ink);
+}
+
+.service-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.service-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.service-detail {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.45;
   color: var(--color-muted);
-  line-height: 1.6;
+  margin: 0;
 }
 
 /* ── WHY US SECTION ── */
@@ -1540,23 +1553,33 @@ section {
 
   /* Services */
   .services-layout {
-    gap: var(--space-lg);
+    gap: var(--space-xl);
   }
 
   .services-intro {
+    gap: var(--space-xs);
+  }
+
+  .services-list {
+    gap: var(--space-lg);
+  }
+
+  .service-item {
     gap: var(--space-sm);
   }
 
-  .accordion-header {
-    padding: var(--space-xs) var(--space-md);
-    min-height: 44px;
-    font-size: var(--text-sm);
+  .service-icon-badge {
+    inline-size: 42px;
+    block-size: 42px;
+    min-inline-size: 42px;
   }
 
-  .accordion-content {
-    padding: 0 var(--space-md) var(--space-sm) var(--space-md);
-    font-size: var(--text-xs);
-    line-height: 1.5;
+  .service-name {
+    font-size: 1.15rem;
+  }
+
+  .service-detail {
+    font-size: 0.875rem;
   }
 
   /* Why Us */
