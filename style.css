@@ -257,10 +257,16 @@ body, html {
   background: #111111;
 }
 
-.window-screenshot {
+.window-screenshot,
+.window-video {
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
+  background: #0d0d11;
+}
+
+.window-screenshot {
   image-rendering: -webkit-optimize-contrast;
   cursor: zoom-in;
   transition: opacity 0.2s;

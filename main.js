@@ -139,4 +139,17 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal();
     }
   });
+
+  // ── 5. Hero Video Play/Pause on Click ──
+  const heroVideo = document.getElementById('heroErpVideo');
+  if (heroVideo) {
+    heroVideo.style.cursor = 'pointer';
+    heroVideo.addEventListener('click', () => {
+      if (heroVideo.paused) {
+        heroVideo.play();
+      } else {
+        heroVideo.pause();
+      }
+    });
+  }
 });
