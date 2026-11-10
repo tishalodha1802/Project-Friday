@@ -289,115 +289,127 @@ section {
   color: var(--color-muted);
 }
 
-/* ── SCHOOL ERP SPECIALISATION ── */
-.specialisation-section {
+/* ── WORK & PROJECTS SHOWCASE (Websites, Web Apps, Apps) ── */
+.work-section {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.work-section--alt {
   background: var(--color-paper-2);
   color: var(--color-ink);
 }
 
-.erp-spotlight {
+.work-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gap-columns);
-  align-items: center;
-  background: var(--color-paper);
-  border: var(--rule-hair) solid var(--color-rule);
-  border-radius: var(--radius-card);
-  padding: var(--space-xl);
-  margin-bottom: var(--space-2xl);
 }
 
-.erp-spotlight-visual {
-  border-radius: var(--radius-inner);
-  overflow: hidden;
+.work-card {
+  background: var(--color-paper-2);
+  color: var(--color-ink);
   border: var(--rule-hair) solid var(--color-rule);
-  line-height: 0;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition: border-color var(--dur-short) var(--ease-out);
 }
 
-.erp-spotlight-visual img {
+.work-section--alt .work-card {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.work-card:hover {
+  border-color: var(--color-accent);
+}
+
+.work-card--highlight {
+  background: var(--color-paper-3);
+  color: var(--color-ink);
+  display: flex;
+  align-items: stretch;
+}
+
+.work-card-inner {
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  height: 100%;
+}
+
+.work-media {
+  position: relative;
   width: 100%;
-  height: auto;
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+  overflow: hidden;
+  background: var(--color-shade);
+  line-height: 0;
+}
+
+.work-media img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: top;
   display: block;
   cursor: zoom-in;
 }
 
-.erp-spotlight-visual:hover {
-  border-color: var(--color-accent);
+.work-status {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: var(--color-paper-3);
+  color: var(--color-ink);
+  font-size: var(--text-xs);
+  font-family: var(--font-body);
+  font-weight: 500;
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  border: var(--rule-hair) solid var(--color-rule);
+  line-height: 1;
 }
 
-.erp-spotlight-body {
+.work-body {
+  padding: var(--space-xl);
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-sm);
+  flex-grow: 1;
 }
 
-.erp-spotlight-body h3 {
+.work-tag {
+  color: var(--color-accent);
+  font-size: var(--text-xs);
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+.work-body h3,
+.work-card-inner h3 {
   font-size: var(--text-title);
   color: var(--color-ink);
+  line-height: 1.25;
 }
 
-.erp-spotlight-body p {
+.work-body p,
+.work-card-inner p {
   color: var(--color-muted);
   font-size: var(--text-sm);
   line-height: 1.6;
 }
 
-.spotlight-points {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
+.work-actions {
+  margin-top: auto;
+  padding-top: var(--space-sm);
 }
 
-.spotlight-points li {
-  font-size: var(--text-sm);
-  color: var(--color-ink-2);
-  position: relative;
-  padding-left: var(--space-md);
-  line-height: 1.5;
-}
-
-.spotlight-points li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--color-accent);
-}
-
-.erp-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--gap-columns);
-}
-
-.erp-card {
-  background: var(--color-paper);
-  color: var(--color-ink);
-  border: var(--rule-hair) solid var(--color-rule);
-  border-radius: var(--radius-card);
-  padding: var(--space-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.erp-card h3 {
-  font-size: var(--text-md);
-  font-weight: 500;
-  color: var(--color-ink);
-}
-
-.erp-card p {
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-  line-height: 1.55;
+.work-actions .key {
+  width: 100%;
 }
 
 /* ── SERVICES ACCORDION ── */
@@ -727,11 +739,8 @@ section {
 
 /* ── RESPONSIVE MEDIA QUERIES ── */
 @media (max-width: 60rem) {
-  .erp-spotlight {
+  .work-grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .erp-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .services-layout {
     grid-template-columns: 1fr;
@@ -872,30 +881,29 @@ section {
     line-height: 1.5;
   }
 
-  /* ERP Spotlight & Grid */
-  .erp-spotlight {
-    padding: var(--space-md);
+  /* Work Grid */
+  .work-grid {
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-lg);
-    margin-bottom: var(--space-lg);
   }
 
-  .erp-spotlight-body h3 {
-    font-size: var(--text-lg);
-    line-height: 1.25;
+  .work-media img {
+    height: 220px;
   }
 
-  .erp-spotlight-body .key {
-    width: 100%;
-    min-height: 48px;
-  }
-
-  .erp-grid {
-    grid-template-columns: 1fr;
+  .work-body {
+    padding: var(--space-md);
     gap: var(--space-sm);
   }
 
-  .erp-card {
+  .work-card-inner {
     padding: var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  .work-actions .key {
+    width: 100%;
+    min-height: 48px;
   }
 
   /* Services */
