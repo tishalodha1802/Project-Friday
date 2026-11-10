@@ -3,11 +3,12 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ── 0. Hero Animated Notion-Style Pill Cycling ──
+  // ── 0. Hero Notion-Style Rotating Verbs Pill ──
   const heroPill = document.getElementById('heroPill');
-  const heroPillWord = document.getElementById('heroPillWord');
+  const heroPillFrame = document.getElementById('heroPillFrame');
+  let heroPillWord = document.getElementById('heroPillWord');
   
-  if (heroPill && heroPillWord) {
+  if (heroPill && heroPillFrame && heroPillWord) {
     const states = [
       { word: 'Build', class: 'hero-pill--build' },
       { word: 'Deploy', class: 'hero-pill--ship' },
@@ -15,27 +16,68 @@ document.addEventListener('DOMContentLoaded', () => {
       { word: 'Scale', class: 'hero-pill--scale' }
     ];
     let currentIndex = 0;
+    let isTransitioning = false;
 
-    setInterval(() => {
+    // Set initial frame width to match initial word
+    heroPillFrame.style.inlineSize = `${heroPillWord.offsetWidth}px`;
+
+    const cycleNext = () => {
+      if (document.hidden || isTransitioning) return;
+      isTransitioning = true;
+
       currentIndex = (currentIndex + 1) % states.length;
       const nextState = states[currentIndex];
+      const currentEl = heroPillWord;
 
-      // Smooth exit
-      heroPillWord.style.opacity = '0';
-      heroPillWord.style.transform = 'translateY(-6px)';
+      // Create incoming word element
+      const nextEl = document.createElement('span');
+      nextEl.className = 'hero-pill-word';
+      nextEl.textContent = nextState.word;
+      nextEl.style.position = 'absolute';
+      nextEl.style.left = '0';
+      nextEl.style.top = '0';
+      nextEl.style.transform = 'translateY(100%)';
+      nextEl.style.opacity = '0';
+      nextEl.style.pointerEvents = 'none';
+
+      heroPillFrame.appendChild(nextEl);
+
+      // Measure incoming word width
+      const nextWidth = nextEl.offsetWidth;
+
+      // Lock current width first to ensure clean transition
+      heroPillFrame.style.inlineSize = `${currentEl.offsetWidth}px`;
+      void heroPillFrame.offsetWidth;
+
+      // Smoothly expand/contract frame width
+      heroPillFrame.style.inlineSize = `${nextWidth}px`;
+
+      // Update pill theme class (CSS transitions background-color & dot over var(--dur-mid))
+      states.forEach(s => heroPill.classList.remove(s.class));
+      heroPill.classList.add(nextState.class);
+
+      // Trigger animation for outgoing and incoming words
+      void nextEl.offsetWidth;
+      currentEl.style.transform = 'translateY(-100%)';
+      currentEl.style.opacity = '0';
+      nextEl.style.transform = 'translateY(0)';
+      nextEl.style.opacity = '1';
 
       setTimeout(() => {
-        states.forEach(s => heroPill.classList.remove(s.class));
-        heroPill.classList.add(nextState.class);
-        heroPillWord.textContent = nextState.word;
-        heroPillWord.style.transform = 'translateY(6px)';
+        currentEl.remove();
+        nextEl.style.position = '';
+        nextEl.style.left = '';
+        nextEl.style.top = '';
+        nextEl.style.transform = '';
+        nextEl.style.opacity = '';
+        nextEl.style.pointerEvents = '';
+        nextEl.id = 'heroPillWord';
+        heroPillWord = nextEl;
+        isTransitioning = false;
+      }, 340);
+    };
 
-        requestAnimationFrame(() => {
-          heroPillWord.style.opacity = '1';
-          heroPillWord.style.transform = 'translateY(0)';
-        });
-      }, 200);
-    }, 2800);
+    setInterval(cycleNext, 2600);
   }
 
   // ── 1. Services Accordion Logic ──

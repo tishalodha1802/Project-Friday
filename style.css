@@ -399,12 +399,32 @@ html[data-theme="dark"] .theme-icon--dark {
   transition: background-color var(--dur-mid) var(--ease-out);
 }
 
+.hero-pill-frame {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  line-height: 1.15;
+  transition: inline-size var(--dur-mid) var(--ease-out);
+}
+
 .hero-pill-word {
   display: inline-block;
   font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1;
-  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+  line-height: 1.15;
+  white-space: nowrap;
+  transition: transform var(--dur-mid) var(--ease-out), opacity var(--dur-mid) var(--ease-out);
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-pill,
+  .hero-dot,
+  .hero-pill-frame,
+  .hero-pill-word {
+    transition: none;
+  }
 }
 
 .hero-lead {
