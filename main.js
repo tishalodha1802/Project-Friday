@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 4. Mobile Navigation Menu Toggle ──
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
-  const navLinks = document.querySelectorAll('.nav-link, .nav-cta');
+  const navLinks = document.querySelectorAll('.nav-link, .nav-cta, .nav-cta-btn, .nav-secondary-link');
 
   if (navToggle && navMenu) {
     const toggleMenu = (open) => {
