@@ -894,6 +894,32 @@ section {
   transform: scale(1.08);
 }
 
+/* ── FLOATING WHATSAPP BUTTON ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  background: #25d366;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  background: #20bd5a;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.45);
+}
+
 /* ── RESPONSIVE MEDIA QUERIES ── */
 @media (max-width: 992px) {
   .hero-title {
@@ -989,5 +1015,14 @@ section {
   .footer-container {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px;
+    border-radius: 50%;
+  }
+  .whatsapp-label {
+    display: none;
   }
 }

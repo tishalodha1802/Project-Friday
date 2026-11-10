@@ -36,31 +36,59 @@ document.addEventListener('DOMContentLoaded', () => {
     if (firstIcon) firstIcon.innerHTML = '&#708;';
   }
 
-  // ── 2. Contact Form Handling ──
+  // ── 2. WhatsApp Inquiry Submission ──
   const form = document.querySelector('.contact-form');
+  const targetPhone = '917665941949'; // Your WhatsApp Number
+
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const btn = form.querySelector('.submit-btn');
       const originalText = btn.textContent;
 
-      btn.textContent = 'Sending Inquiry...';
-      btn.disabled = true;
+      const firstName = document.getElementById('firstName')?.value.trim() || '';
+      const lastName = document.getElementById('lastName')?.value.trim() || '';
+      const fullName = `${firstName} ${lastName}`.trim();
+      const email = document.getElementById('email')?.value.trim() || '';
+      const phone = document.getElementById('phone')?.value.trim() || 'Not specified';
+      const orgName = document.getElementById('orgName')?.value.trim() || 'Not specified';
+      const role = document.getElementById('role')?.value.trim() || 'Not specified';
+      const service = document.getElementById('service')?.value || 'General Inquiry';
+      const message = document.getElementById('message')?.value.trim() || '';
 
-      // Realistic response delay
+      // Collect checked sources
+      const checkedSources = Array.from(document.querySelectorAll('input[name="source"]:checked'))
+        .map(cb => cb.value);
+      const heardVia = checkedSources.length > 0 ? checkedSources.join(', ') : 'Not specified';
+
+      // Format structured WhatsApp message
+      const text = `*New Project Friday Inquiry*\n` +
+        `--------------------------------\n` +
+        `👤 *Name:* ${fullName}\n` +
+        `📧 *Email:* ${email}\n` +
+        `📞 *Phone:* ${phone}\n` +
+        `🏫 *Organization / School:* ${orgName}\n` +
+        `💼 *Role / Title:* ${role}\n` +
+        `🎯 *Service Needed:* ${service}\n` +
+        `🔍 *Heard Via:* ${heardVia}\n` +
+        `--------------------------------\n` +
+        `📝 *Project Details:*\n${message}`;
+
+      const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(text)}`;
+
+      btn.textContent = '✓ Opening WhatsApp...';
+      btn.style.background = '#25d366';
+      btn.style.color = '#ffffff';
+
+      // Launch WhatsApp
+      window.open(whatsappUrl, '_blank');
+
       setTimeout(() => {
-        btn.textContent = '✓ Inquiry Sent Successfully!';
-        btn.style.background = '#15803d'; // Success green
-        btn.style.color = '#ffffff';
         form.reset();
-
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.background = '';
-          btn.style.color = '';
-          btn.disabled = false;
-        }, 4000);
-      }, 900);
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 3500);
     });
   }
 
