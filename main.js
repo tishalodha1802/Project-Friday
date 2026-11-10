@@ -9,21 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
   accordionHeaders.forEach(header => {
     header.addEventListener('click', () => {
       const content = header.nextElementSibling;
-      const icon = header.querySelector('.icon');
+      const icon = header.querySelector('.accordion-icon');
       const isOpen = content.style.display === 'block';
 
       // Close all accordion panels
       document.querySelectorAll('.accordion-content').forEach(c => {
         c.style.display = 'none';
       });
-      document.querySelectorAll('.accordion-header .icon').forEach(i => {
+      document.querySelectorAll('.accordion-header .accordion-icon').forEach(i => {
         i.innerHTML = '&#709;'; // arrow down
       });
 
       // If it wasn't open, open it
       if (!isOpen) {
         content.style.display = 'block';
-        icon.innerHTML = '&#708;'; // arrow up
+        if (icon) icon.innerHTML = '&#708;'; // arrow up
       }
     });
   });
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Open the first accordion item by default
   if (accordionHeaders.length > 0) {
     const firstContent = accordionHeaders[0].nextElementSibling;
-    const firstIcon = accordionHeaders[0].querySelector('.icon');
+    const firstIcon = accordionHeaders[0].querySelector('.accordion-icon');
     if (firstContent) firstContent.style.display = 'block';
     if (firstIcon) firstIcon.innerHTML = '&#708;';
   }
@@ -96,15 +96,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── 3. Navbar scroll elevation ──
   const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.06)';
-      navbar.style.borderBottomColor = 'transparent';
-    } else {
-      navbar.style.boxShadow = 'none';
-      navbar.style.borderBottomColor = 'rgba(0, 0, 0, 0.06)';
-    }
-  });
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('is-scrolled');
+      } else {
+        navbar.classList.remove('is-scrolled');
+      }
+    });
+  }
+
+  // ── 4. Mobile Navigation Menu Toggle ──
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  const navLinks = document.querySelectorAll('.nav-link, .nav-cta');
+
+  if (navToggle && navMenu) {
+    const toggleMenu = (open) => {
+      const willOpen = typeof open === 'boolean' ? open : !navMenu.classList.contains('is-open');
+      navMenu.classList.toggle('is-open', willOpen);
+      navToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    };
+
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close when clicking nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMenu(false);
+      });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (navMenu.classList.contains('is-open') && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        toggleMenu(false);
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
+        toggleMenu(false);
+        navToggle.focus();
+      }
+    });
+  }
 
   // ── 4. HD Image Lightbox Modal ──
   const modal = document.getElementById('imageModal');

@@ -9,17 +9,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600&family=Wix+Madefor+Text:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   
   <nav class="navbar">
     <div class="container nav-container">
       <a href="#" class="nav-brand">Project Friday</a>
-      <div class="nav-links">
-        <a href="#specialisation">School ERP</a>
-        <a href="#services">Services</a>
-        <a href="#why-us">Why Us</a>
-        <a href="#contact">Contact</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <div class="nav-links" id="navMenu">
+        <a href="#specialisation" class="nav-link">School ERP</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#why-us" class="nav-link">Why Us</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#specialisation" class="key key--primary nav-cta">Book a School Demo</a>
       </div>
     </div>
   </nav>
