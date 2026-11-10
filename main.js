@@ -113,15 +113,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (firstIcon) firstIcon.innerHTML = '&#708;';
   }
 
-  // ── 2. WhatsApp Inquiry Submission ──
-  const form = document.querySelector('.contact-form');
-  const targetPhone = '917665941949'; // Your WhatsApp Number
+  // ── 2. Contact Form Submission (Web3Forms to uditya@projectfriday.in) ──
+  const form = document.getElementById('contactForm') || document.querySelector('.contact-form');
+  const targetPhone = '917665941949';
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn ? btn.textContent : 'Send WhatsApp Inquiry';
+      const statusEl = document.getElementById('formStatus');
+      const originalText = 'Send Inquiry';
 
       const firstName = document.getElementById('firstName')?.value.trim() || '';
       const lastName = document.getElementById('lastName')?.value.trim() || '';
@@ -133,41 +134,90 @@ document.addEventListener('DOMContentLoaded', () => {
       const service = document.getElementById('service')?.value || 'General Inquiry';
       const message = document.getElementById('message')?.value.trim() || '';
 
-      // Collect checked sources
       const checkedSources = Array.from(document.querySelectorAll('input[name="source"]:checked'))
         .map(cb => cb.value);
       const heardVia = checkedSources.length > 0 ? checkedSources.join(', ') : 'Not specified';
 
-      // Format structured WhatsApp message
-      const text = `*New Project Friday Inquiry*\n` +
+      // WhatsApp fallback text
+      const waText = `*New Project Friday Inquiry*\n` +
         `--------------------------------\n` +
         `👤 *Name:* ${fullName}\n` +
         `📧 *Email:* ${email}\n` +
         `📞 *Phone:* ${phone}\n` +
-        `🏫 *Organization / School:* ${orgName}\n` +
-        `💼 *Role / Title:* ${role}\n` +
-        `🎯 *Service Needed:* ${service}\n` +
+        `🏫 *Organization:* ${orgName}\n` +
+        `💼 *Role:* ${role}\n` +
+        `🎯 *Service:* ${service}\n` +
         `🔍 *Heard Via:* ${heardVia}\n` +
         `--------------------------------\n` +
-        `📝 *Project Details:*\n${message}`;
-
-      const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(text)}`;
+        `📝 *Details:*\n${message}`;
+      const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(waText)}`;
 
       if (btn) {
-        btn.textContent = 'Opening WhatsApp...';
+        btn.textContent = 'Sending Inquiry...';
         btn.disabled = true;
       }
+      if (statusEl) {
+        statusEl.className = 'form-status';
+        statusEl.style.display = 'none';
+        statusEl.innerHTML = '';
+      }
 
-      // Launch WhatsApp
-      window.open(whatsappUrl, '_blank');
+      const payload = {
+        access_key: '2b77447a-99a2-4935-a906-05b444314856',
+        subject: `New Project Inquiry from ${fullName || 'Website Lead'}`,
+        from_name: 'Project Friday Website',
+        name: fullName,
+        email: email,
+        phone: phone,
+        organization: orgName,
+        role: role,
+        service: service,
+        heard_via: heardVia,
+        message: message
+      };
 
-      setTimeout(() => {
-        form.reset();
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          if (btn) {
+            btn.textContent = '✓ Message Sent to Email';
+          }
+          if (statusEl) {
+            statusEl.className = 'form-status is-success';
+            statusEl.style.display = 'block';
+            statusEl.innerHTML = `Thank you! Your inquiry has been delivered directly to <strong>uditya@projectfriday.in</strong>.<br><span style="margin-top: 6px; display: inline-block;">Need an instant reply? <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">Chat on WhatsApp &rarr;</a></span>`;
+          }
+          form.reset();
+          setTimeout(() => {
+            if (btn) {
+              btn.textContent = originalText;
+              btn.disabled = false;
+            }
+          }, 5000);
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (err) {
         if (btn) {
           btn.textContent = originalText;
           btn.disabled = false;
         }
-      }, 3500);
+        if (statusEl) {
+          statusEl.className = 'form-status is-error';
+          statusEl.style.display = 'block';
+          statusEl.innerHTML = `Could not deliver email right now. Please try again or <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">message us on WhatsApp &rarr;</a>`;
+        }
+      }
     });
   }
 

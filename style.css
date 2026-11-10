@@ -1022,6 +1022,28 @@ section {
   outline-offset: 2px;
 }
 
+.form-status {
+  display: none;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-inner);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+.form-status.is-success {
+  display: block;
+  background: var(--pill-mint-bg);
+  color: var(--pill-mint-ink);
+  border: var(--rule-hair) solid var(--pill-mint-dot);
+}
+
+.form-status.is-error {
+  display: block;
+  background: var(--pill-peach-bg);
+  color: var(--pill-peach-ink);
+  border: var(--rule-hair) solid var(--pill-peach-dot);
+}
+
 /* ── WHATSAPP BUTTON ── */
 .whatsapp-float {
   position: fixed;
