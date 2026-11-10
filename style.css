@@ -504,6 +504,17 @@ section {
   color: var(--color-muted);
 }
 
+.contact-email-link {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--dur-micro) var(--ease-out);
+}
+
+.contact-email-link:hover {
+  color: var(--color-accent);
+}
+
 /* ── WORK & PROJECTS SHOWCASE (Unified 3D Slider) ── */
 .work-section {
   position: relative;
