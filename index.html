@@ -3,87 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Friday | Software Engineering, School ERP & Digital Solutions</title>
+  <title>Project Friday · School ERP Systems and Custom Software</title>
+  <meta name="description" content="Project Friday develops specialized School ERP systems, custom business CRM platforms, mobile apps, websites, and digital marketing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   
   <nav class="navbar">
-    <div class="nav-logo"><a href="#">PROJECT FRIDAY.</a></div>
-    <div class="nav-links">
-      <a href="#specialisation">School ERP</a>
-      <a href="#services">Services</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#contact">Contact</a>
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">Project Friday</a>
+      <div class="nav-links">
+        <a href="#specialisation">School ERP</a>
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </nav>
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <div class="container hero-container">
-      <div class="hero-badge">Custom Software & Digital Systems</div>
-      <h1 class="hero-title">Software built for how your organisation actually runs.</h1>
-      <p class="hero-desc">We develop specialized School ERP platforms, custom business ERP & CRM systems, mobile apps, and high-performance websites—paired with focused digital marketing to grow your reach.</p>
-      
-      <div class="hero-actions">
-        <a href="#specialisation" class="btn btn-primary">School ERP Solution</a>
-        <a href="#services" class="btn btn-secondary">Explore Services</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Software built for your organisation’s workflow</h1>
+        <p class="hero-lead">Custom School ERPs, business management systems, apps, and digital growth.</p>
+        
+        <div class="hero-actions">
+          <a href="#specialisation" class="key key--primary">Book a School Demo</a>
+          <a href="#contact" class="key key--secondary">Contact Us</a>
+        </div>
       </div>
 
-      <!-- Live ERP Showcase Window -->
       <div class="hero-showcase">
-        <div class="showcase-window">
-          <div class="window-header">
-            <div class="window-controls">
-              <span class="control-dot close"></span>
-              <span class="control-dot min"></span>
-              <span class="control-dot max"></span>
-            </div>
-            <div class="window-address">edunext.projectfriday.com/portal/demo</div>
-            <div class="window-tag">Live System Walkthrough</div>
+        <div class="media-frame">
+          <video 
+            id="heroErpVideo"
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            preload="auto"
+            poster="school-erp-preview.jpg">
+            <source src="erp.mp4" type="video/mp4">
+          </video>
+          <div class="media-frame-tag">
+            <span class="status-dot"></span>
+            <span>EduNext School ERP in Action</span>
           </div>
-          <div class="window-body">
-            <video 
-              id="heroErpVideo"
-              class="window-video" 
-              autoplay 
-              loop 
-              muted 
-              playsinline 
-              preload="auto"
-              poster="school-erp-preview.jpg">
-              <source src="erp.mp4" type="video/mp4">
-              Your browser does not support HTML5 video.
-            </video>
-            <div class="showcase-overlay-pill">
-              <span class="pulse-indicator"></span>
-              <span>EduNext School ERP &bull; Live System Walkthrough</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-highlights">
-        <div class="highlight-item">
-          <span class="highlight-tag">Flagship Focus</span>
-          <h4>School ERP</h4>
-          <p>Admissions, fee automation, attendance, timetables, and parent/teacher apps.</p>
-        </div>
-        <div class="highlight-item">
-          <span class="highlight-tag">Business Systems</span>
-          <h4>Custom ERP & CRM</h4>
-          <p>Tailored systems for sales pipelines, inventory, workflows, and operations.</p>
-        </div>
-        <div class="highlight-item">
-          <span class="highlight-tag">Development</span>
-          <h4>Web & Mobile Apps</h4>
-          <p>Dependable iOS, Android, and web applications built with modern stacks.</p>
-        </div>
-        <div class="highlight-item">
-          <span class="highlight-tag">Growth</span>
-          <h4>Digital Marketing</h4>
-          <p>Targeted search optimization, paid campaigns, and lead generation.</p>
         </div>
       </div>
     </div>
@@ -92,132 +61,114 @@
   <!-- SCHOOL ERP SPECIALISATION SECTION -->
   <section id="specialisation" class="specialisation-section">
     <div class="container">
-      <div class="section-header-block">
-        <span class="section-tag">Core Specialisation</span>
-        <h2 class="section-title">School ERP Management Platform</h2>
-        <p class="section-subtitle">A unified, secure administrative system built specifically for schools and colleges—replacing scattered paperwork, spreadsheets, and disconnected tools with one reliable platform.</p>
+      <div class="section-head">
+        <h2>School ERP Management Platform</h2>
+        <p>A unified administrative system engineered specifically for schools, colleges, and educational trusts.</p>
       </div>
 
-      <!-- ERP Spotlight Showcase -->
-      <div class="erp-preview-spotlight">
-        <div class="spotlight-image-wrap">
-          <img src="school-erp-preview.jpg" alt="EduNext Campus Management ERP Interface" class="spotlight-img">
+      <div class="erp-spotlight">
+        <div class="erp-spotlight-visual">
+          <img src="school-erp-preview.jpg" alt="EduNext School ERP Login Portal" class="spotlight-img">
         </div>
-        <div class="spotlight-features">
-          <div class="spotlight-badge">Platform Overview</div>
+        <div class="erp-spotlight-body">
           <h3>EduNext Education Management System</h3>
-          <p>A comprehensive institutional ERP engineered to manage academics, administrative staff, and daily campus operations in one secure cloud workspace.</p>
-          <ul class="spotlight-list">
-            <li><strong>Multi-Role Dashboards:</strong> Dedicated secure portals for Administrators, Principals, Faculty, Students, and Parents.</li>
-            <li><strong>Unified Campus Operations:</strong> Admissions, Fee collection, Attendance, Exams, Library, and Transportation synced in real time.</li>
-            <li><strong>Mobile-First & Cloud-Ready:</strong> Accessible on desktops, tablets, and smartphones with instant notification alerts.</li>
+          <p>Institutional ERP managing academics, staff administration, and daily campus operations.</p>
+          <ul class="spotlight-points">
+            <li>Logins for Administrators, Faculty, Students, and Parents</li>
+            <li>Real-time admissions, fee automation, and attendance</li>
+            <li>Mobile apps for timetables, notices, and homework</li>
           </ul>
-          <a href="#contact" class="btn btn-primary">Book a Personalized School Demo</a>
+          <a href="#contact" class="key key--primary">Schedule a Campus Walkthrough</a>
         </div>
       </div>
 
       <div class="erp-grid">
         <div class="erp-card">
-          <div class="erp-card-num">01</div>
-          <h3>Admissions & Student Records</h3>
-          <p>End-to-end digital admissions, document uploads, enrollment generation, and centralized student lifecycle profiles from entry to graduation.</p>
+          <h3>Admissions and Student Records</h3>
+          <p>Digital admissions, document verification, and complete student records.</p>
         </div>
         <div class="erp-card">
-          <div class="erp-card-num">02</div>
-          <h3>Fee Automation & Digital Receipts</h3>
-          <p>Automate fee structures, discounts, installment schedules, fine calculations, and online payments with instant digital receipts and revenue reports.</p>
+          <h3>Fee Automation and Digital Receipts</h3>
+          <p>Automated fee heads, installments, online payments, and instant receipts.</p>
         </div>
         <div class="erp-card">
-          <div class="erp-card-num">03</div>
-          <h3>Attendance & Biometric Integration</h3>
-          <p>Classroom attendance via web or app with automated SMS/WhatsApp alerts to parents, plus support for RFID and biometric hardware sync.</p>
+          <h3>Attendance and Biometric Sync</h3>
+          <p>Daily student and staff attendance with automated alerts and biometric sync.</p>
         </div>
         <div class="erp-card">
-          <div class="erp-card-num">04</div>
-          <h3>Examinations & Report Cards</h3>
-          <p>Custom report card formats matching your board requirements (CBSE, ICSE, State, IB), grade calculations, marks management, and parent downloads.</p>
+          <h3>Examinations and Report Cards</h3>
+          <p>Custom report cards for CBSE, ICSE, and state boards with auto-grading.</p>
         </div>
         <div class="erp-card">
-          <div class="erp-card-num">05</div>
-          <h3>Parent & Teacher Portals</h3>
-          <p>Dedicated web and mobile apps for homework sharing, daily updates, circular notices, timetable viewing, and direct teacher-parent communication.</p>
+          <h3>Parent and Teacher Portals</h3>
+          <p>Dedicated apps for homework, notices, timetables, and messaging.</p>
         </div>
         <div class="erp-card">
-          <div class="erp-card-num">06</div>
-          <h3>Transport, Library & Operations</h3>
-          <p>Route-by-route bus tracking, book issue/return tracking with barcode scanning, inventory management, and staff payroll records.</p>
+          <h3>Transport, Library and Operations</h3>
+          <p>Bus route tracking, barcode library management, and staff payroll.</p>
         </div>
-      </div>
-
-      <div class="erp-cta-banner">
-        <div>
-          <h3>Want a live walkthrough of the School ERP?</h3>
-          <p>We'll show you how it works with your school's actual fee structures and class workflows.</p>
-        </div>
-        <a href="#contact" class="btn btn-primary">Request a School Demo</a>
       </div>
     </div>
   </section>
 
   <!-- SERVICES SECTION -->
-  <section id="services" class="services-section">
+  <section id="services">
     <div class="container">
-      <div class="section-header-block">
-        <span class="section-tag">Capabilities</span>
-        <h2 class="section-title">Services We Deliver</h2>
+      <div class="section-head">
+        <h2>Services We Deliver</h2>
+        <p>Software engineering and digital marketing tailored to your operating requirements.</p>
       </div>
       
-      <div class="services-content-wrapper">
-        <div class="services-text">
-          <p>Every organisation has its own way of operating. Off-the-shelf software often forces you to change your habits to match its limitations. At Project Friday, we build software and digital solutions directly around the way your team actually works.</p>
-          <p>Whether you need a dedicated school management setup, a custom CRM for your sales team, a customer-facing mobile app, or targeted digital marketing to generate leads—we design, build, and support it end-to-end.</p>
-          <p class="chat-prompt">Have a specific project in mind? &nbsp;<a href="#contact" class="lets-chat">Talk to our team &rarr;</a></p>
+      <div class="services-layout">
+        <div class="services-intro">
+          <p>We build software directly around your day-to-day requirements, avoiding rigid templates.</p>
+          <a href="#contact" class="action-link">Talk to our team</a>
         </div>
 
         <div class="services-accordion">
           <div class="accordion-item">
             <button class="accordion-header" type="button">
               <span>School ERP Solutions</span>
-              <span class="icon">&#709;</span>
+              <span class="accordion-icon">&#709;</span>
             </button>
             <div class="accordion-content">
-              <p>Complete campus management software: student admissions, fee processing, daily attendance, examination reports, timetable management, and mobile apps for parents and teachers.</p>
+              <p>Admissions, fee automation, attendance, report cards, and parent apps.</p>
             </div>
           </div>
           <div class="accordion-item">
             <button class="accordion-header" type="button">
-              <span>Custom ERP & CRM Development</span>
-              <span class="icon">&#709;</span>
+              <span>Custom ERP and CRM Development</span>
+              <span class="accordion-icon">&#709;</span>
             </button>
             <div class="accordion-content">
-              <p>Software tailored to your company's exact operational flow—lead management, sales pipelines, inventory tracking, invoice automation, and executive dashboards.</p>
+              <p>Custom pipelines, inventory tracking, customer data, and workflows.</p>
             </div>
           </div>
           <div class="accordion-item">
             <button class="accordion-header" type="button">
-              <span>Mobile App Development</span>
-              <span class="icon">&#709;</span>
+              <span>Mobile Application Development</span>
+              <span class="accordion-icon">&#709;</span>
             </button>
             <div class="accordion-content">
-              <p>Native (iOS & Android) and cross-platform apps built for speed, offline reliability, and easy everyday use by your staff or end customers.</p>
+              <p>Native and cross-platform apps built for speed and offline reliability.</p>
             </div>
           </div>
           <div class="accordion-item">
             <button class="accordion-header" type="button">
-              <span>Website & Web Application Development</span>
-              <span class="icon">&#709;</span>
+              <span>Website and Web App Development</span>
+              <span class="accordion-icon">&#709;</span>
             </button>
             <div class="accordion-content">
-              <p>Fast, clean websites and custom web portals built with modern frameworks. Structured for search visibility, speed, and real lead conversion without bloated code.</p>
+              <p>Fast websites and client portals built with modern frameworks.</p>
             </div>
           </div>
           <div class="accordion-item">
             <button class="accordion-header" type="button">
-              <span>Digital Marketing & Lead Generation</span>
-              <span class="icon">&#709;</span>
+              <span>Digital Marketing and Lead Generation</span>
+              <span class="accordion-icon">&#709;</span>
             </button>
             <div class="accordion-content">
-              <p>Results-oriented digital campaigns: local & technical SEO, Google search ads, Meta ad campaigns, and conversion rate improvements focused on measurable customer inquiries.</p>
+              <p>Search optimization, paid campaigns, and targeted lead generation.</p>
             </div>
           </div>
         </div>
@@ -228,56 +179,51 @@
   <!-- WHY US SECTION -->
   <section id="why-us" class="why-section">
     <div class="container">
-      <div class="section-header-block">
-        <span class="section-tag">How We Work</span>
-        <h2 class="section-title">Built for Reliability & Long-Term Use</h2>
-        <p class="section-subtitle">We work with you from planning to deployment and beyond.</p>
+      <div class="section-head">
+        <h2>How We Build and Support</h2>
+        <p>Direct collaboration from initial planning to deployment and onboarding.</p>
       </div>
 
       <div class="why-grid">
         <div class="why-card">
-          <div class="why-card-icon">01</div>
-          <h4>Custom Fit, Not Generic</h4>
-          <p>We take time to understand your day-to-day operations and build systems that fit your team, rather than forcing you to adapt to rigid templates.</p>
+          <h3>Custom Fit, Not Generic</h3>
+          <p>Software tailored directly to your team’s actual workflow.</p>
         </div>
         <div class="why-card">
-          <div class="why-card-icon">02</div>
-          <h4>Secure & Reliable</h4>
-          <p>Role-based access control, secure data storage, automated backups, and stable code so your operational data is always protected.</p>
+          <h3>Secure and Reliable</h3>
+          <p>Role permissions, secure databases, automated backups, and stable code.</p>
         </div>
         <div class="why-card">
-          <div class="why-card-icon">03</div>
-          <h4>Staff Training & Direct Support</h4>
-          <p>Software is only useful if your staff can comfortably use it. We provide thorough training for your team and direct support whenever questions come up.</p>
+          <h3>Staff Training and Direct Support</h3>
+          <p>Comprehensive staff training and direct ongoing technical support.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT SECTION -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-container">
-      <div class="contact-header-block">
-        <span class="section-tag">Inquiry</span>
-        <h2 class="form-title">Start a Conversation</h2>
-        <p class="contact-desc">Tell us what you're looking to build or solve. We'll review your requirements and get back to you within 24 hours.</p>
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Start a Conversation</h2>
+        <p>Tell us your requirements and we will reply promptly.</p>
       </div>
 
       <form class="contact-form" id="contactForm">
         <div class="form-row">
           <div class="form-group">
-            <label for="firstName">First Name *</label>
+            <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
           </div>
           <div class="form-group">
-            <label for="lastName">Last Name *</label>
+            <label for="lastName">Last Name</label>
             <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="email">Email Address *</label>
+            <label for="email">Email Address</label>
             <input type="email" id="email" name="email" placeholder="name@company.com" required>
           </div>
           <div class="form-group">
@@ -292,52 +238,53 @@
             <input type="text" id="orgName" name="orgName" placeholder="Organization name">
           </div>
           <div class="form-group">
-            <label for="role">Role / Title</label>
-            <input type="text" id="role" name="role" placeholder="e.g. Principal, Director, Founder">
+            <label for="role">Role or Title</label>
+            <input type="text" id="role" name="role" placeholder="e.g. Principal, Founder">
           </div>
         </div>
 
         <div class="form-group">
-          <label for="service">Service of Interest *</label>
+          <label for="service">Service of Interest</label>
           <select id="service" name="service" required>
             <option value="" disabled selected>Select a service</option>
-            <option value="School ERP Platform (Live Demo / Implementation)">School ERP Platform (Live Demo / Implementation)</option>
-            <option value="Custom Business ERP & CRM Development">Custom Business ERP & CRM Development</option>
-            <option value="Mobile App Development (iOS & Android)">Mobile App Development (iOS & Android)</option>
-            <option value="Website & Web App Development">Website & Web App Development</option>
-            <option value="Digital Marketing & Lead Generation">Digital Marketing & Lead Generation</option>
-            <option value="Comprehensive / Multiple Services">Comprehensive / Multiple Services</option>
+            <option value="School ERP Platform">School ERP Platform</option>
+            <option value="Custom Business ERP & CRM">Custom Business ERP and CRM</option>
+            <option value="Mobile App Development">Mobile App Development</option>
+            <option value="Website Development">Website Development</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Multiple Services">Multiple Services</option>
           </select>
         </div>
 
-        <div class="form-group checkbox-group-container">
-          <label class="mb-label">How Did You Hear About Us?</label>
+        <div class="form-group">
+          <label>How Did You Hear About Us?</label>
           <div class="checkbox-group">
-            <label class="check-label"><input type="checkbox" name="source" value="Direct Referral"> Direct Referral / Word of Mouth</label>
-            <label class="check-label"><input type="checkbox" name="source" value="Google Search"> Google Search</label>
-            <label class="check-label"><input type="checkbox" name="source" value="Social Media"> Social Media</label>
-            <label class="check-label"><input type="checkbox" name="source" value="Other"> Other</label>
+            <label class="check-item"><input type="checkbox" name="source" value="Referral"> Referral</label>
+            <label class="check-item"><input type="checkbox" name="source" value="Search"> Google Search</label>
+            <label class="check-item"><input type="checkbox" name="source" value="Social"> Social Media</label>
+            <label class="check-item"><input type="checkbox" name="source" value="Other"> Other</label>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="message">Project Details / Message *</label>
-          <textarea id="message" name="message" placeholder="Briefly describe what you need (e.g. number of students for School ERP, key features needed, or timeline)" rows="4" required></textarea>
+          <label for="message">Project Details</label>
+          <textarea id="message" name="message" placeholder="Briefly describe what you need (number of students, key modules, or project goals)" rows="4" required></textarea>
         </div>
 
-        <button type="submit" class="submit-btn">Send Inquiry via WhatsApp</button>
+        <button type="submit" class="key key--primary">Send WhatsApp Inquiry</button>
       </form>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-container">
-      <div class="footer-left">
-        <strong>PROJECT FRIDAY.</strong>
+      <div>
+        <span class="footer-brand">Project Friday</span>
         <p>Software development, School ERP systems, and digital growth solutions.</p>
       </div>
-      <div class="footer-right">
-        <p>&copy; 2026 Project Friday. All rights reserved.</p>
+      <div>
+        <p>&copy; 2026 Project Friday.</p>
       </div>
     </div>
   </footer>
@@ -348,7 +295,7 @@
      target="_blank" 
      rel="noopener noreferrer" 
      aria-label="Chat with us on WhatsApp">
-    <svg viewBox="0 0 32 32" width="24" height="24" fill="#ffffff">
+    <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor">
       <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.74 5.43 2.03 7.71L.67 31.33l7.86-1.83A15.43 15.43 0 0016 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm7.84 21.91c-.33.93-1.63 1.74-2.67 1.97-.71.16-1.63.29-4.75-.98-3.99-1.63-6.57-5.69-6.77-5.96-.2-.27-1.63-2.17-1.63-4.14s1.03-2.94 1.4-3.34c.37-.4.81-.5 1.08-.5.27 0 .54.01.78.02.25.01.58-.1 1 .89.37.93 1.28 3.12 1.39 3.35.11.23.18.5.03.8-.15.3-.23.49-.45.75-.22.26-.47.58-.67.78-.22.22-.45.46-.19.9.26.44 1.15 1.9 2.47 3.08 1.7 1.51 3.13 1.98 3.57 2.2.44.22.7.19.96-.11.26-.3 1.12-1.3 1.42-1.75.3-.45.6-.37 1-.22.4.15 2.56 1.21 3 1.43.44.22.74.33.85.52.11.19.11 1.07-.22 2z"/>
     </svg>
     <span class="whatsapp-label">WhatsApp Us</span>
@@ -358,8 +305,7 @@
   <div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-label="HD Image Preview">
     <div class="image-modal-content">
       <button class="image-modal-close" id="modalClose" aria-label="Close modal">&times;</button>
-      <img id="modalImg" src="" alt="HD ERP Preview">
-      <div class="image-modal-caption">EduNext School Management ERP &bull; Ultra HD Preview</div>
+      <img id="modalImg" src="school-erp-preview.jpg" alt="EduNext School ERP Preview">
     </div>
   </div>
 

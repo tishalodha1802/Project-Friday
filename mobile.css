@@ -1,17 +1,26 @@
+/* Hallmark · shape: Split · genre: modern-minimal · theme: Cobalt (by request) · job: try · draw: manual
+ * hero: Restrained · nav: Fixed · footer: Split · imagery: the product · signature: ERP walkthrough video
+ * axes: light/grotesk-sans/cool · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P9 H9 E9 S9 R9 V9 · weakest: none */
+@import url("./tokens.css");
+
 /* ── Mobile nav overlay ── */
 .mobile-nav-open .nav-links {
   display: flex !important;
   flex-direction: column;
   position: fixed;
   inset: 0;
-  background: rgba(5,5,15,.97);
-  backdrop-filter: blur(20px);
+  background: var(--color-graphite);
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  z-index: 999;
+  gap: var(--space-xl);
+  z-index: var(--z-modal);
 }
-.mobile-nav-open .nav-links a { font-size: 1.8rem; color: var(--text); }
+.mobile-nav-open .nav-links a { font-size: var(--text-xl); color: var(--color-graphite-ink); }
 .mobile-nav-open .hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
 .mobile-nav-open .hamburger span:nth-child(2) { opacity: 0; }
 .mobile-nav-open .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-open .hamburger span { transition: none !important; }
+}

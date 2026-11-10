@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const btn = form.querySelector('.submit-btn');
-      const originalText = btn.textContent;
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn ? btn.textContent : 'Send WhatsApp Inquiry';
 
       const firstName = document.getElementById('firstName')?.value.trim() || '';
       const lastName = document.getElementById('lastName')?.value.trim() || '';
@@ -76,18 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(text)}`;
 
-      btn.textContent = '✓ Opening WhatsApp...';
-      btn.style.background = '#25d366';
-      btn.style.color = '#ffffff';
+      if (btn) {
+        btn.textContent = 'Opening WhatsApp...';
+        btn.disabled = true;
+      }
 
       // Launch WhatsApp
       window.open(whatsappUrl, '_blank');
 
       setTimeout(() => {
         form.reset();
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
+        if (btn) {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }
       }, 3500);
     });
   }
