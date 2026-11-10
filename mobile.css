@@ -1,6 +1,6 @@
-/* Hallmark · shape: Split · genre: modern-minimal · theme: Cobalt (by request) · job: try · draw: manual
- * hero: Restrained · nav: Fixed · footer: Split · imagery: the product · signature: ERP walkthrough video
- * axes: light/grotesk-sans/cool · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · shape: Split · genre: modern-minimal · theme: Dusk (by request) · job: try · draw: manual
+ * hero: Restrained · nav: Fixed · footer: Split · imagery: the product · signature: ERP walkthrough video · dusk: fog/periwinkle-apricot/glass
+ * axes: dark/grotesk-sans/cool · posture: committed · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P9 H9 E9 S9 R9 V9 · weakest: none */
 @import url("./tokens.css");
 
@@ -10,13 +10,13 @@
   flex-direction: column;
   position: fixed;
   inset: 0;
-  background: var(--color-graphite);
+  background: var(--color-paper);
   justify-content: center;
   align-items: center;
   gap: var(--space-xl);
   z-index: var(--z-modal);
 }
-.mobile-nav-open .nav-links a { font-size: var(--text-xl); color: var(--color-graphite-ink); }
+.mobile-nav-open .nav-links a { font-size: var(--text-xl); color: var(--color-ink); }
 .mobile-nav-open .hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
 .mobile-nav-open .hamburger span:nth-child(2) { opacity: 0; }
 .mobile-nav-open .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }

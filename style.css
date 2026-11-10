@@ -1,6 +1,6 @@
-/* Hallmark · shape: Split · genre: modern-minimal · theme: Cobalt (by request) · job: try · draw: manual
- * hero: Restrained · nav: Fixed · footer: Split · imagery: the product · signature: ERP walkthrough video
- * axes: light/grotesk-sans/cool · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · shape: Split · genre: modern-minimal · theme: Dusk (by request) · job: try · draw: manual
+ * hero: Restrained · nav: Fixed · footer: Split · imagery: the product · signature: ERP walkthrough video · dusk: fog/periwinkle-apricot/glass
+ * axes: dark/grotesk-sans/cool · posture: committed · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P9 H9 E9 S9 R9 V9 · weakest: none, aligned all tokens and craft standards */
 @import url("./tokens.css");
 @import url("./base.css");
@@ -56,33 +56,32 @@
   outline-offset: 2px;
 }
 
-/* ── BUTTONS (Cobalt Keycaps) ── */
+/* ── BUTTONS (Dusk Periwinkle Pills) ── */
 .key {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: var(--rule-hair) solid var(--color-rule-2);
-  border-radius: var(--radius-input);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-pill);
   padding: 0 var(--space-lg);
   min-height: 44px;
-  background: var(--color-key-face);
+  background: var(--color-paper-2);
   color: var(--color-ink);
   font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: var(--shadow-key);
-  transition: transform var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+  transition: transform var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
 }
 
 .key:hover {
-  transform: translateY(-1px);
+  background: var(--color-paper-3);
+  border-color: var(--color-accent);
 }
 
 .key:active {
-  transform: translateY(2px);
-  box-shadow: var(--shadow-key-press);
+  transform: translateY(1px);
 }
 
 .key:disabled {
@@ -98,18 +97,19 @@
 
 .key--primary {
   background: var(--color-accent);
-  border-color: var(--color-accent-edge);
+  border-color: var(--color-accent);
   color: var(--color-accent-ink);
-  box-shadow: var(--shadow-key-accent);
+  box-shadow: var(--shadow-key-primary);
 }
 
 .key--primary:hover {
-  background: var(--color-accent-deep);
+  background: var(--color-accent-hi);
+  border-color: var(--color-accent-hi);
 }
 
 .key--secondary {
   background: var(--color-paper-2);
-  border-color: var(--color-rule-2);
+  border-color: var(--color-rule);
   color: var(--color-ink);
 }
 
@@ -122,6 +122,7 @@
   align-items: center;
   padding-top: calc(var(--space-4xl) + var(--space-md));
   padding-bottom: var(--space-2xl);
+  background: radial-gradient(circle at 50% 0%, var(--color-paper-2) 0%, var(--color-paper) 70%);
   border-bottom: var(--rule-hair) solid var(--color-rule);
 }
 
@@ -161,9 +162,8 @@
   position: relative;
   width: 100%;
   border-radius: var(--radius-card);
-  border: var(--rule-hair) solid var(--color-rule-2);
-  background: var(--color-graphite);
-  box-shadow: var(--shadow-card);
+  background: var(--color-paper-2);
+  border: var(--rule-hair) solid var(--color-rule);
   overflow: hidden;
 }
 
@@ -179,8 +179,8 @@
   position: absolute;
   bottom: var(--space-md);
   left: var(--space-md);
-  background: var(--color-graphite-2);
-  color: var(--color-graphite-ink);
+  background: var(--color-paper-3);
+  color: var(--color-ink);
   font-size: var(--text-xs);
   font-family: var(--font-display);
   font-weight: 500;
@@ -197,7 +197,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--color-success);
+  background: var(--color-accent-2);
   display: inline-block;
   flex-shrink: 0;
 }
@@ -229,6 +229,7 @@ section {
 /* ── SCHOOL ERP SPECIALISATION ── */
 .specialisation-section {
   background: var(--color-paper-2);
+  color: var(--color-ink);
 }
 
 .erp-spotlight {
@@ -244,9 +245,9 @@ section {
 }
 
 .erp-spotlight-visual {
-  border-radius: var(--radius-input);
+  border-radius: var(--radius-inner);
   overflow: hidden;
-  border: var(--rule-hair) solid var(--color-rule-2);
+  border: var(--rule-hair) solid var(--color-rule);
   line-height: 0;
   transition: border-color var(--dur-short) var(--ease-out);
 }
@@ -315,6 +316,7 @@ section {
 
 .erp-card {
   background: var(--color-paper);
+  color: var(--color-ink);
   border: var(--rule-hair) solid var(--color-rule);
   border-radius: var(--radius-card);
   padding: var(--space-lg);
@@ -325,7 +327,7 @@ section {
 
 .erp-card h3 {
   font-size: var(--text-md);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-ink);
 }
 
@@ -363,11 +365,11 @@ section {
 }
 
 .action-link:hover {
-  color: var(--color-accent-deep);
+  color: var(--color-accent-hi);
 }
 
 .services-accordion {
-  border-top: var(--rule-hair) solid var(--color-rule-2);
+  border-top: var(--rule-hair) solid var(--color-rule);
 }
 
 .accordion-item {
@@ -384,7 +386,7 @@ section {
   align-items: center;
   font-family: var(--font-display);
   font-size: var(--text-md);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-ink);
   cursor: pointer;
   text-align: left;
@@ -428,6 +430,7 @@ section {
 /* ── WHY US SECTION ── */
 .why-section {
   background: var(--color-paper-2);
+  color: var(--color-ink);
 }
 
 .why-grid {
@@ -438,6 +441,7 @@ section {
 
 .why-card {
   background: var(--color-paper);
+  color: var(--color-ink);
   border: var(--rule-hair) solid var(--color-rule);
   border-radius: var(--radius-card);
   padding: var(--space-lg);
@@ -488,9 +492,9 @@ section {
 .form-group textarea {
   width: 100%;
   padding: var(--space-xs) var(--space-sm);
-  border: var(--rule-hair) solid var(--color-rule-2);
-  border-radius: var(--radius-input);
-  background: var(--color-paper);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-inner);
+  background: var(--color-paper-2);
   color: var(--color-ink);
   font-family: var(--font-body);
   font-size: var(--text-sm);
@@ -509,7 +513,7 @@ section {
 .form-group select:disabled,
 .form-group textarea:disabled {
   opacity: 0.65;
-  background: var(--color-paper-2);
+  background: var(--color-paper-3);
   color: var(--color-muted);
   cursor: not-allowed;
 }
@@ -578,10 +582,11 @@ section {
 
 /* ── FOOTER ── */
 .footer {
-  background: var(--color-graphite);
-  color: var(--color-graphite-muted);
+  background: var(--color-shade);
+  color: var(--color-muted);
   padding-block: var(--space-2xl);
   font-size: var(--text-sm);
+  border-top: var(--rule-hair) solid var(--color-rule);
 }
 
 .footer-container {
@@ -595,7 +600,7 @@ section {
 .footer-brand {
   font-family: var(--font-display);
   font-weight: 600;
-  color: var(--color-graphite-ink);
+  color: var(--color-ink);
 }
 
 /* ── IMAGE LIGHTBOX MODAL ── */
@@ -604,7 +609,7 @@ section {
   position: fixed;
   inset: 0;
   z-index: var(--z-modal);
-  background: var(--color-modal-backdrop);
+  background: var(--color-shade);
   padding: var(--space-lg);
   align-items: center;
   justify-content: center;
@@ -627,17 +632,17 @@ section {
   max-width: 100%;
   max-height: 84vh;
   object-fit: contain;
-  border-radius: var(--radius-input);
-  border: var(--rule-hair) solid var(--color-rule-2);
+  border-radius: var(--radius-inner);
+  border: var(--rule-hair) solid var(--color-rule);
 }
 
 .image-modal-close {
   position: absolute;
   top: -36px;
   right: 0;
-  background: var(--color-graphite-2);
-  color: var(--color-graphite-ink);
-  border: var(--rule-hair) solid var(--color-rule-2);
+  background: var(--color-paper-3);
+  color: var(--color-ink);
+  border: var(--rule-hair) solid var(--color-rule);
   width: 32px;
   height: 32px;
   border-radius: var(--radius-pill);
@@ -650,7 +655,7 @@ section {
 }
 
 .image-modal-close:hover {
-  background: var(--color-graphite);
+  background: var(--color-paper-2);
 }
 
 .image-modal-close:focus-visible {
