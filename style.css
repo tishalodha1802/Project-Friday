@@ -261,6 +261,13 @@ body, html {
   width: 100%;
   height: auto;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+
+.window-screenshot:hover {
+  opacity: 0.97;
 }
 
 .showcase-overlay-pill {
@@ -395,6 +402,8 @@ section {
   width: 100%;
   height: auto;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  cursor: zoom-in;
   transition: transform 0.3s ease;
 }
 
@@ -808,6 +817,81 @@ section {
   margin: 0;
   font-size: 13px;
   color: #666666;
+}
+
+/* ── HD IMAGE LIGHTBOX MODAL ── */
+.image-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 40px 20px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.image-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-modal-content img {
+  max-width: 100%;
+  max-height: 84vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.image-modal-caption {
+  margin-top: 14px;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 6px 18px;
+  border-radius: 30px;
+}
+
+.image-modal-close {
+  position: absolute;
+  top: -42px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  border: none;
+  font-size: 26px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  line-height: 1;
+}
+
+.image-modal-close:hover {
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(1.08);
 }
 
 /* ── RESPONSIVE MEDIA QUERIES ── */

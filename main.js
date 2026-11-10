@@ -75,4 +75,40 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.style.borderBottomColor = 'rgba(0, 0, 0, 0.06)';
     }
   });
+
+  // ── 4. HD Image Lightbox Modal ──
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalClose = document.getElementById('modalClose');
+  const clickableImages = document.querySelectorAll('.window-screenshot, .spotlight-img');
+
+  clickableImages.forEach(img => {
+    img.addEventListener('click', () => {
+      if (modal && modalImg) {
+        modalImg.src = img.src;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  const closeModal = () => {
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
 });
