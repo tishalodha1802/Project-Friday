@@ -194,4 +194,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ── 6. Light / Dark Theme Mode Toggle ──
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    const updateThemeState = (theme) => {
+      const isDark = theme === 'dark';
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      themeToggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    };
+
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateThemeState(currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const targetTheme = isDark ? 'light' : 'dark';
+      if (targetTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      try {
+        localStorage.setItem('pf_theme', targetTheme);
+      } catch (err) {}
+      updateThemeState(targetTheme);
+    });
+  }
 });

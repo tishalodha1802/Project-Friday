@@ -30,6 +30,7 @@
   align-items: center;
   width: 100%;
   position: relative;
+  gap: var(--space-md);
 }
 
 .nav-brand {
@@ -51,6 +52,65 @@
   width: auto;
   aspect-ratio: 942 / 631;
   display: block;
+  filter: invert(1);
+  transition: filter var(--dur-short) var(--ease-out);
+}
+
+html[data-theme="dark"] .nav-brand-logo,
+html[data-theme="dark"] .footer-brand-logo {
+  filter: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: var(--color-paper-2);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-inner);
+  cursor: pointer;
+  color: var(--color-ink);
+  transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+}
+
+.theme-toggle:hover {
+  background: var(--color-paper-3);
+  border-color: var(--color-accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.theme-icon {
+  display: block;
+}
+
+.theme-icon--light {
+  display: none;
+}
+
+.theme-icon--dark {
+  display: block;
+}
+
+html[data-theme="dark"] .theme-icon--light {
+  display: block;
+}
+
+html[data-theme="dark"] .theme-icon--dark {
+  display: none;
 }
 
 .nav-toggle {
@@ -105,6 +165,7 @@
   display: flex;
   gap: var(--space-lg);
   align-items: center;
+  margin-left: auto;
 }
 
 .nav-links a:not(.key) {
@@ -696,6 +757,8 @@ section {
   width: auto;
   aspect-ratio: 942 / 631;
   display: block;
+  filter: invert(1);
+  transition: filter var(--dur-short) var(--ease-out);
 }
 
 /* ── IMAGE LIGHTBOX MODAL ── */
