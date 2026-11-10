@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (heroPill && heroPillWord) {
     const states = [
-      { word: 'Ship', class: 'hero-pill--ship' },
-      { word: 'Create', class: 'hero-pill--create' },
       { word: 'Build', class: 'hero-pill--build' },
+      { word: 'Deploy', class: 'hero-pill--ship' },
+      { word: 'Automate', class: 'hero-pill--create' },
       { word: 'Scale', class: 'hero-pill--scale' }
     ];
     let currentIndex = 0;
