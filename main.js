@@ -3,6 +3,22 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  // ── Opening Logo Intro Overlay ──
+  const siteIntro = document.getElementById('siteIntro');
+  if (siteIntro) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      siteIntro.classList.add('is-done');
+    } else {
+      setTimeout(() => {
+        siteIntro.classList.add('is-leaving');
+      }, 950);
+      setTimeout(() => {
+        siteIntro.classList.add('is-done');
+      }, 1450);
+    }
+  }
+
   // ── 0. Hero Notion-Style Rotating Verbs Pill ──
   const heroPill = document.getElementById('heroPill');
   const heroPillFrame = document.getElementById('heroPillFrame');
