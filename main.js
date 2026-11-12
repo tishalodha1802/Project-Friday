@@ -454,7 +454,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         currentIndex = 0;
+        lastScrollIndex = 0;
         updateSlider();
+        handleScrollDriver();
       });
     });
 
@@ -517,7 +519,69 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowRight') goTo(currentIndex + 1);
     });
 
+    // ── 8. Scroll-Driven Showcase Interaction ──
+    const workScrollTrack = document.getElementById('workScrollTrack');
+    let lastScrollIndex = 0;
+    let isTicking = false;
+
+    const handleScrollDriver = () => {
+      if (!workScrollTrack) return;
+      if (filteredCards.length <= 1) {
+        workScrollTrack.classList.add('is-single');
+        return;
+      }
+      workScrollTrack.classList.remove('is-single');
+
+      const rect = workScrollTrack.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const scrollableDist = rect.height - windowHeight;
+      if (scrollableDist <= 0) return;
+
+      const progress = Math.max(0, Math.min(1, (56 - rect.top) / scrollableDist));
+      const targetIndex = Math.min(
+        filteredCards.length - 1,
+        Math.floor(progress * filteredCards.length)
+      );
+
+      if (targetIndex !== currentIndex && targetIndex !== lastScrollIndex) {
+        lastScrollIndex = targetIndex;
+        currentIndex = targetIndex;
+        updateSlider();
+      }
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(() => {
+          handleScrollDriver();
+          isTicking = false;
+        });
+        isTicking = true;
+      }
+    }, { passive: true });
+
     // Initial setup
     updateSlider();
+    handleScrollDriver();
+  }
+
+  // ── 9. General Scroll-Reveal Observer for Sections ──
+  const revealElements = document.querySelectorAll('.scroll-reveal');
+  if (revealElements.length && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.12
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('is-visible'));
   }
 });

@@ -614,12 +614,56 @@ section {
   color: var(--color-accent);
 }
 
-/* ── WORK & PROJECTS SHOWCASE (Unified 3D Slider) ── */
+/* ── SCROLL REVEAL ── */
+html.js .scroll-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
+}
+
+html.js .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── WORK & PROJECTS SHOWCASE (Unified 3D Slider + Scroll Showcase) ── */
 .work-section {
   position: relative;
   background: var(--color-paper);
   color: var(--color-ink);
-  overflow: hidden;
+  overflow-x: clip;
+  padding-block: 0;
+}
+
+.work-scroll-track {
+  position: relative;
+  min-height: 210vh;
+}
+
+.work-scroll-track.is-single {
+  min-height: auto;
+}
+
+.work-sticky {
+  position: sticky;
+  top: 56px;
+  min-height: calc(100vh - 56px);
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-md);
+}
+
+.work-scroll-track.is-single .work-sticky {
+  position: static;
+  min-height: auto;
 }
 
 .section-anchor {
@@ -635,7 +679,7 @@ section {
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--space-xs);
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-lg);
 }
 
 .slider-tab {
@@ -679,7 +723,7 @@ section {
 .slider-track {
   position: relative;
   width: 100%;
-  min-height: 580px;
+  min-height: 495px;
   transform-style: preserve-3d;
   display: flex;
   align-items: center;
@@ -852,7 +896,7 @@ section {
 
 .work-media img {
   width: 100%;
-  height: 280px;
+  height: 235px;
   object-fit: cover;
   object-position: top;
   display: block;
@@ -875,10 +919,10 @@ section {
 }
 
 .work-body {
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   flex-grow: 1;
 }
 
@@ -1598,6 +1642,14 @@ section {
   }
 
   /* 3D Slider Mobile */
+  .work-scroll-track {
+    min-height: 170vh;
+  }
+
+  .work-sticky {
+    padding-block: var(--space-md);
+  }
+
   .slider-tabs {
     margin-bottom: var(--space-md);
     gap: var(--space-2xs);
@@ -1615,7 +1667,7 @@ section {
   }
 
   .slider-track {
-    min-height: 520px;
+    min-height: 455px;
   }
 
   .slider-card {
