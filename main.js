@@ -365,34 +365,164 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 7. Featured Projects Category Filtering & Up-to-Down Showcase ──
+  // ── 7. Featured Projects Vertical Slideshow (2 Slides / Pane) ──
+  const vslideshowTrack = document.getElementById('vslideshowTrack');
+  const vslidePrev = document.getElementById('vslidePrev');
+  const vslideNext = document.getElementById('vslideNext');
+  const vslideToggle = document.getElementById('vslideToggle');
+  const vslideIndicators = document.getElementById('vslideIndicators');
   const filterBtns = document.querySelectorAll('.project-filter');
-  const projectCards = Array.from(document.querySelectorAll('.projects-feed .work-card'));
+  const vslideshowStage = document.getElementById('vslideshowStage');
 
-  if (filterBtns.length && projectCards.length) {
-    const applyFilter = (filter) => {
-      filterBtns.forEach(b => {
-        const matches = b.getAttribute('data-filter') === filter;
-        b.classList.toggle('is-active', matches);
-        b.setAttribute('aria-selected', matches ? 'true' : 'false');
-      });
+  if (vslideshowTrack) {
+    const allPanes = Array.from(vslideshowTrack.querySelectorAll('.vslide-pane'));
+    let activePanes = [...allPanes];
+    let currentIndex = 0;
+    let autoInterval = null;
+    let isPaused = false;
+    let isTransitioning = false;
 
-      projectCards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        const show = filter === 'all' || cat === filter;
-        if (show) {
-          card.style.display = '';
-          card.classList.add('is-visible');
-        } else {
-          card.style.display = 'none';
-        }
+    const updateIndicators = () => {
+      if (!vslideIndicators) return;
+      vslideIndicators.innerHTML = '';
+      if (activePanes.length <= 1) return;
+      activePanes.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = `vslide-dot ${i === currentIndex ? 'is-active' : ''}`;
+        dot.setAttribute('type', 'button');
+        dot.setAttribute('aria-label', `Go to slide pair ${i + 1}`);
+        dot.addEventListener('click', () => {
+          if (i !== currentIndex && !isTransitioning) {
+            goTo(i, i > currentIndex ? 'next' : 'prev');
+          }
+        });
+        vslideIndicators.appendChild(dot);
       });
     };
 
+    const goTo = (targetIdx, direction = 'next') => {
+      if (isTransitioning || activePanes.length <= 1) return;
+      isTransitioning = true;
+
+      const prevIdx = currentIndex;
+      currentIndex = (targetIdx + activePanes.length) % activePanes.length;
+
+      const currentPane = activePanes[prevIdx];
+      const nextPane = activePanes[currentIndex];
+
+      activePanes.forEach(p => {
+        p.classList.remove('is-active', 'is-leaving', 'is-leaving-prev', 'is-entering-prev');
+      });
+
+      if (direction === 'next') {
+        currentPane.classList.add('is-leaving');
+        nextPane.classList.add('is-active');
+      } else {
+        currentPane.classList.add('is-leaving-prev');
+        nextPane.classList.add('is-entering-prev');
+        void nextPane.offsetWidth;
+        nextPane.classList.remove('is-entering-prev');
+        nextPane.classList.add('is-active');
+      }
+
+      updateIndicators();
+
+      setTimeout(() => {
+        currentPane.classList.remove('is-leaving', 'is-leaving-prev');
+        isTransitioning = false;
+      }, 700);
+    };
+
+    const startAutoPlay = () => {
+      stopAutoPlay();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (activePanes.length > 1 && !isPaused) {
+        autoInterval = setInterval(() => {
+          goTo(currentIndex + 1, 'next');
+        }, 4500);
+      }
+    };
+
+    const stopAutoPlay = () => {
+      if (autoInterval) {
+        clearInterval(autoInterval);
+        autoInterval = null;
+      }
+    };
+
+    if (vslidePrev) vslidePrev.addEventListener('click', () => goTo(currentIndex - 1, 'prev'));
+    if (vslideNext) vslideNext.addEventListener('click', () => goTo(currentIndex + 1, 'next'));
+
+    if (vslideToggle) {
+      vslideToggle.addEventListener('click', () => {
+        isPaused = !isPaused;
+        const pauseIcon = vslideToggle.querySelector('.vslide-icon--pause');
+        const playIcon = vslideToggle.querySelector('.vslide-icon--play');
+        if (isPaused) {
+          stopAutoPlay();
+          vslideToggle.setAttribute('aria-label', 'Play slideshow');
+          if (pauseIcon) pauseIcon.style.display = 'none';
+          if (playIcon) playIcon.style.display = 'inline-block';
+        } else {
+          startAutoPlay();
+          vslideToggle.setAttribute('aria-label', 'Pause slideshow');
+          if (pauseIcon) pauseIcon.style.display = 'inline-block';
+          if (playIcon) playIcon.style.display = 'none';
+        }
+      });
+    }
+
+    if (vslideshowStage) {
+      vslideshowStage.addEventListener('mouseenter', stopAutoPlay);
+      vslideshowStage.addEventListener('mouseleave', () => { if (!isPaused) startAutoPlay(); });
+      vslideshowStage.addEventListener('focusin', stopAutoPlay);
+      vslideshowStage.addEventListener('focusout', () => { if (!isPaused) startAutoPlay(); });
+
+      // Vertical swipe support
+      let touchStartY = 0;
+      vslideshowStage.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      vslideshowStage.addEventListener('touchend', (e) => {
+        const touchEndY = e.changedTouches[0].clientY;
+        const diffY = touchStartY - touchEndY;
+        if (Math.abs(diffY) > 40) {
+          if (diffY > 0) goTo(currentIndex + 1, 'next');
+          else goTo(currentIndex - 1, 'prev');
+        }
+      }, { passive: true });
+    }
+
+    // Category Filter Buttons
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const filter = btn.getAttribute('data-filter');
-        applyFilter(filter);
+        filterBtns.forEach(b => {
+          const matches = b.getAttribute('data-filter') === filter;
+          b.classList.toggle('is-active', matches);
+          b.setAttribute('aria-selected', matches ? 'true' : 'false');
+        });
+
+        allPanes.forEach(pane => {
+          const cards = Array.from(pane.querySelectorAll('.work-card'));
+          const matchingCards = cards.filter(c => filter === 'all' || c.getAttribute('data-category') === filter);
+          cards.forEach(c => {
+            c.style.display = (filter === 'all' || c.getAttribute('data-category') === filter) ? '' : 'none';
+          });
+          pane.style.display = matchingCards.length > 0 ? '' : 'none';
+        });
+
+        activePanes = allPanes.filter(p => p.style.display !== 'none');
+        currentIndex = 0;
+
+        activePanes.forEach((p, idx) => {
+          p.classList.remove('is-active', 'is-leaving', 'is-leaving-prev');
+          if (idx === 0) p.classList.add('is-active');
+        });
+
+        updateIndicators();
+        startAutoPlay();
       });
     });
 
@@ -401,14 +531,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const hash = window.location.hash.replace('#', '');
       if (['websites', 'webapps', 'apps'].includes(hash)) {
         const matchingBtn = document.querySelector(`.project-filter[data-filter="${hash}"]`);
-        if (matchingBtn) {
-          applyFilter(hash);
-        }
+        if (matchingBtn) matchingBtn.click();
       }
     };
 
     window.addEventListener('hashchange', handleHash);
     handleHash();
+
+    // Initial setup
+    updateIndicators();
+    startAutoPlay();
   }
 
   // ── 8. General Scroll-Reveal Observer for Sections ──

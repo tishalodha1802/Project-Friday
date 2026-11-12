@@ -293,7 +293,7 @@
     </div>
   </section>
 
-  <!-- WORK & PROJECTS SHOWCASE (Vertical Up-to-Down Scrolling Feed) -->
+  <!-- WORK & PROJECTS SHOWCASE (Vertical Slideshow) -->
   <section id="projects" class="work-section">
     <div class="container">
       <div class="section-head scroll-reveal">
@@ -301,126 +301,137 @@
         <p>Websites, web apps, CRMs, ERPs, and mobile apps engineered for production.</p>
       </div>
 
-      <!-- Category Filter Tabs -->
-      <div class="project-filters scroll-reveal" role="tablist" aria-label="Filter project categories">
-        <button class="project-filter is-active" data-filter="all" type="button" role="tab" aria-selected="true">All Works</button>
-        <button class="project-filter" data-filter="websites" type="button" role="tab" aria-selected="false">Websites</button>
-        <button class="project-filter" data-filter="webapps" type="button" role="tab" aria-selected="false">Web Apps</button>
-        <button class="project-filter" data-filter="apps" type="button" role="tab" aria-selected="false">Apps & ERP</button>
+      <!-- Category Filter Tabs & Vertical Slideshow Controls -->
+      <div class="vslideshow-toolbar scroll-reveal">
+        <div class="project-filters" role="tablist" aria-label="Filter project categories">
+          <button class="project-filter is-active" data-filter="all" type="button" role="tab" aria-selected="true">All Works</button>
+          <button class="project-filter" data-filter="websites" type="button" role="tab" aria-selected="false">Websites</button>
+          <button class="project-filter" data-filter="webapps" type="button" role="tab" aria-selected="false">Web Apps</button>
+          <button class="project-filter" data-filter="apps" type="button" role="tab" aria-selected="false">Apps & ERP</button>
+        </div>
+
+        <div class="vslideshow-controls" aria-label="Slideshow controls">
+          <button class="vslideshow-btn" id="vslidePrev" type="button" aria-label="Previous slide pair">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+          </button>
+          <button class="vslideshow-btn" id="vslideToggle" type="button" aria-label="Pause slideshow" title="Pause / Play slideshow">
+            <svg class="vslide-icon--pause" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+            <svg class="vslide-icon--play" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </button>
+          <button class="vslideshow-btn" id="vslideNext" type="button" aria-label="Next slide pair">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
       </div>
 
-      <!-- Up to Down Scrolling Projects Feed -->
-      <div class="projects-feed" id="projectsFeed">
-        <!-- Project 1: Ganpati Granites (Websites) -->
-        <div id="websites" class="section-anchor"></div>
-        <article class="work-card scroll-reveal" data-category="websites">
-          <div class="work-card-inner">
-            <div class="work-media">
-              <img src="project-ganpati-granites.png" alt="Ganpati Granites luxury stone catalog and portal" class="work-img spotlight-img" loading="lazy">
-              <span class="work-status">Live System</span>
-            </div>
-            <div class="work-body">
-              <h3>Ganpati Granites</h3>
-              <p class="work-tag">Websites · Architectural Stone</p>
-              <p>Luxury architectural stone catalog showcasing rare granites with bespoke quotation workflows.</p>
-              <div class="work-actions">
-                <a href="#contact" class="key key--secondary">Inquire Project</a>
+      <!-- Vertical Slideshow Stage (2 slides visible, sliding vertically) -->
+      <div class="vslideshow-stage scroll-reveal" id="vslideshowStage" aria-roledescription="carousel" aria-live="polite">
+        <div class="vslideshow-track" id="vslideshowTrack">
+          <!-- Slide Pane 1: 2 Projects (Ganpati Granites & Rajput Matrimony) -->
+          <div class="vslide-pane is-active" data-pane="0">
+            <div id="websites" class="section-anchor"></div>
+            <article class="work-card" data-category="websites">
+              <div class="work-media">
+                <img src="project-ganpati-granites.png" alt="Ganpati Granites luxury stone catalog and portal" class="work-img spotlight-img" loading="lazy">
+                <span class="work-status">Live System</span>
               </div>
-            </div>
-          </div>
-        </article>
+              <div class="work-body">
+                <h3>Ganpati Granites</h3>
+                <p class="work-tag">Websites · Architectural Stone</p>
+                <p>Luxury architectural stone catalog showcasing rare granites with bespoke quotation workflows.</p>
+                <div class="work-actions">
+                  <a href="#contact" class="key key--secondary">Inquire Project</a>
+                </div>
+              </div>
+            </article>
 
-        <!-- Project 2: Rajput Matrimony (Web Apps) -->
-        <div id="webapps" class="section-anchor"></div>
-        <article class="work-card scroll-reveal" data-category="webapps">
-          <div class="work-card-inner">
-            <div class="work-media">
-              <img src="project-rajput-matrimony.png" alt="Rajput Matrimony custom matchmaking platform and CRM" class="work-img spotlight-img" loading="lazy">
-              <span class="work-status">Production Portal</span>
-            </div>
-            <div class="work-body">
-              <h3>Rajput Matrimony</h3>
-              <p class="work-tag">Web Apps · Community Platform</p>
-              <p>Community matchmaking portal featuring gotra compatibility logic, clan filtering, and verified memberships.</p>
-              <div class="work-actions">
-                <a href="#contact" class="key key--secondary">Inquire Project</a>
+            <div id="webapps" class="section-anchor"></div>
+            <article class="work-card" data-category="webapps">
+              <div class="work-media">
+                <img src="project-rajput-matrimony.png" alt="Rajput Matrimony custom matchmaking platform and CRM" class="work-img spotlight-img" loading="lazy">
+                <span class="work-status">Production Portal</span>
               </div>
-            </div>
+              <div class="work-body">
+                <h3>Rajput Matrimony</h3>
+                <p class="work-tag">Web Apps · Community Platform</p>
+                <p>Community matchmaking portal featuring gotra compatibility logic, clan filtering, and verified memberships.</p>
+                <div class="work-actions">
+                  <a href="#contact" class="key key--secondary">Inquire Project</a>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
 
-        <!-- Project 3: Namankan Education (Web Apps) -->
-        <article class="work-card scroll-reveal" data-category="webapps">
-          <div class="work-card-inner">
-            <div class="work-media">
-              <img src="project-namankan.png" alt="Namankan student counselling and college admissions portal" class="work-img spotlight-img" loading="lazy">
-              <span class="work-status">Admissions Guidance</span>
-            </div>
-            <div class="work-body">
-              <h3>Namankan Education</h3>
-              <p class="work-tag">Web Apps · namankanedu.in</p>
-              <p>Pan-India admissions portal connecting students with MBBS, engineering, and university counselling.</p>
-              <div class="work-actions">
-                <a href="#contact" class="key key--secondary">Inquire Project</a>
+          <!-- Slide Pane 2: 2 Projects (Namankan Education & Cora Workspace) -->
+          <div class="vslide-pane" data-pane="1">
+            <article class="work-card" data-category="webapps">
+              <div class="work-media">
+                <img src="project-namankan.png" alt="Namankan student counselling and college admissions portal" class="work-img spotlight-img" loading="lazy">
+                <span class="work-status">Admissions Guidance</span>
               </div>
-            </div>
-          </div>
-        </article>
+              <div class="work-body">
+                <h3>Namankan Education</h3>
+                <p class="work-tag">Web Apps · namankanedu.in</p>
+                <p>Pan-India admissions portal connecting students with MBBS, engineering, and university counselling.</p>
+                <div class="work-actions">
+                  <a href="#contact" class="key key--secondary">Inquire Project</a>
+                </div>
+              </div>
+            </article>
 
-        <!-- Project 4: Cora AI Workspace (Web Apps) -->
-        <article class="work-card scroll-reveal" data-category="webapps">
-          <div class="work-card-inner">
-            <div class="work-media">
-              <img src="project-cora-notes.png" alt="Cora AI-powered collaborative workspace" class="work-img spotlight-img" loading="lazy">
-              <span class="work-status">Public Beta</span>
-            </div>
-            <div class="work-body">
-              <h3>Cora Workspace</h3>
-              <p class="work-tag">Web Apps · cora.app</p>
-              <p>AI-powered collaborative workspace combining intelligent notes, agile databases, and task pipelines.</p>
-              <div class="work-actions">
-                <a href="#contact" class="key key--secondary">Inquire Project</a>
+            <article class="work-card" data-category="webapps">
+              <div class="work-media">
+                <img src="project-cora-notes.png" alt="Cora AI-powered collaborative workspace" class="work-img spotlight-img" loading="lazy">
+                <span class="work-status">Public Beta</span>
               </div>
-            </div>
+              <div class="work-body">
+                <h3>Cora Workspace</h3>
+                <p class="work-tag">Web Apps · cora.app</p>
+                <p>AI-powered collaborative workspace combining intelligent notes, agile databases, and task pipelines.</p>
+                <div class="work-actions">
+                  <a href="#contact" class="key key--secondary">Inquire Project</a>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
 
-        <!-- Project 5: Jaipur Murti Sacred Art (Websites) -->
-        <article class="work-card scroll-reveal" data-category="websites">
-          <div class="work-card-inner">
-            <div class="work-media">
-              <img src="project-jaipur-murti.png" alt="Jaipur Murti handcrafted sacred art marketplace" class="work-img spotlight-img" loading="lazy">
-              <span class="work-status">Artisanal Commerce</span>
-            </div>
-            <div class="work-body">
-              <h3>Jaipur Murti</h3>
-              <p class="work-tag">Websites · jaipurmurti.in</p>
-              <p>Direct-to-consumer artisanal marketplace presenting museum-grade handcrafted sacred murtis and heritage art.</p>
-              <div class="work-actions">
-                <a href="#contact" class="key key--secondary">Inquire Project</a>
+          <!-- Slide Pane 3: 2 Projects (Jaipur Murti & Daymark Education ERP) -->
+          <div class="vslide-pane" data-pane="2">
+            <article class="work-card" data-category="websites">
+              <div class="work-media">
+                <img src="project-jaipur-murti.png" alt="Jaipur Murti handcrafted sacred art marketplace" class="work-img spotlight-img" loading="lazy">
+                <span class="work-status">Artisanal Commerce</span>
               </div>
-            </div>
-          </div>
-        </article>
+              <div class="work-body">
+                <h3>Jaipur Murti</h3>
+                <p class="work-tag">Websites · jaipurmurti.in</p>
+                <p>Direct-to-consumer artisanal marketplace presenting museum-grade handcrafted sacred murtis and heritage art.</p>
+                <div class="work-actions">
+                  <a href="#contact" class="key key--secondary">Inquire Project</a>
+                </div>
+              </div>
+            </article>
 
-        <!-- Project 6: Daymark Education ERP (Apps) -->
-        <div id="apps" class="section-anchor"></div>
-        <article class="work-card scroll-reveal" data-category="apps">
-          <div class="work-card-inner">
-            <div class="work-media">
-              <img src="project-daymark-erp.png" alt="Daymark Education Management System ERP" class="work-img spotlight-img" loading="lazy">
-              <span class="work-status">Enterprise ERP</span>
-            </div>
-            <div class="work-body">
-              <h3>Daymark Education ERP</h3>
-              <p class="work-tag">Apps & ERP · daymark.edu.in</p>
-              <p>Comprehensive school and college ERP managing student admissions, fees, attendance, and campus administration.</p>
-              <div class="work-actions">
-                <a href="#contact" class="key key--secondary">Inquire Project</a>
+            <div id="apps" class="section-anchor"></div>
+            <article class="work-card" data-category="apps">
+              <div class="work-media">
+                <img src="project-daymark-erp.png" alt="Daymark Education Management System ERP" class="work-img spotlight-img" loading="lazy">
+                <span class="work-status">Enterprise ERP</span>
               </div>
-            </div>
+              <div class="work-body">
+                <h3>Daymark Education ERP</h3>
+                <p class="work-tag">Apps & ERP · daymark.edu.in</p>
+                <p>Comprehensive school and college ERP managing student admissions, fees, attendance, and campus administration.</p>
+                <div class="work-actions">
+                  <a href="#contact" class="key key--secondary">Inquire Project</a>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
+        </div>
+
+        <!-- Vertical Slide Indicators -->
+        <div class="vslide-indicators" id="vslideIndicators" aria-label="Slideshow pagination"></div>
       </div>
     </div>
   </section>
