@@ -365,207 +365,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 7. 3D Project Card Slider with Interactive Hover Tilt ──
-  const sliderStage = document.getElementById('projectSliderStage');
-  const sliderTrack = document.getElementById('projectSliderTrack');
-  const prevBtn = document.getElementById('sliderPrev');
-  const nextBtn = document.getElementById('sliderNext');
-  const dotsContainer = document.getElementById('sliderDots');
-  const filterTabs = document.querySelectorAll('.slider-tab');
+  // ── 7. Featured Projects Category Filtering & Up-to-Down Showcase ──
+  const filterBtns = document.querySelectorAll('.project-filter');
+  const projectCards = Array.from(document.querySelectorAll('.projects-feed .work-card'));
 
-  if (sliderStage && sliderTrack) {
-    const allCards = Array.from(sliderTrack.querySelectorAll('.slider-card'));
-    let filteredCards = [...allCards];
-    let currentIndex = 0;
-
-    const updateSlider = () => {
-      filteredCards.forEach((card, i) => {
-        card.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden-left', 'is-hidden-right');
-        card.style.display = 'flex';
-        card.style.removeProperty('--tilt-x');
-        card.style.removeProperty('--tilt-y');
-
-        if (i === currentIndex) {
-          card.classList.add('is-active');
-        } else if (i === currentIndex - 1 || (currentIndex === 0 && i === filteredCards.length - 1 && filteredCards.length > 2)) {
-          card.classList.add('is-prev');
-        } else if (i === currentIndex + 1 || (currentIndex === filteredCards.length - 1 && i === 0 && filteredCards.length > 2)) {
-          card.classList.add('is-next');
-        } else if (i < currentIndex) {
-          card.classList.add('is-hidden-left');
-        } else {
-          card.classList.add('is-hidden-right');
-        }
+  if (filterBtns.length && projectCards.length) {
+    const applyFilter = (filter) => {
+      filterBtns.forEach(b => {
+        const matches = b.getAttribute('data-filter') === filter;
+        b.classList.toggle('is-active', matches);
+        b.setAttribute('aria-selected', matches ? 'true' : 'false');
       });
 
-      // Update dots
-      if (dotsContainer) {
-        dotsContainer.innerHTML = '';
-        filteredCards.forEach((_, i) => {
-          const dot = document.createElement('button');
-          dot.className = `slider-dot ${i === currentIndex ? 'is-active' : ''}`;
-          dot.setAttribute('type', 'button');
-          dot.setAttribute('aria-label', `Go to project ${i + 1}`);
-          dot.addEventListener('click', () => {
-            currentIndex = i;
-            updateSlider();
-          });
-          dotsContainer.appendChild(dot);
-        });
-      }
-    };
-
-    const goTo = (index) => {
-      currentIndex = (index + filteredCards.length) % filteredCards.length;
-      updateSlider();
-    };
-
-    if (prevBtn) prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
-
-    // Clicking prev/next side cards directly slides to them
-    sliderTrack.addEventListener('click', (e) => {
-      const card = e.target.closest('.slider-card');
-      if (!card) return;
-      if (card.classList.contains('is-prev')) {
-        goTo(currentIndex - 1);
-      } else if (card.classList.contains('is-next')) {
-        goTo(currentIndex + 1);
-      }
-    });
-
-    // Category filter tabs
-    filterTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        filterTabs.forEach(t => {
-          t.classList.remove('is-active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('is-active');
-        tab.setAttribute('aria-selected', 'true');
-
-        const filter = tab.getAttribute('data-filter');
-        allCards.forEach(c => c.style.display = 'none');
-
-        if (filter === 'all') {
-          filteredCards = [...allCards];
+      projectCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const show = filter === 'all' || cat === filter;
+        if (show) {
+          card.style.display = '';
+          card.classList.add('is-visible');
         } else {
-          filteredCards = allCards.filter(c => c.getAttribute('data-category') === filter);
+          card.style.display = 'none';
         }
+      });
+    };
 
-        currentIndex = 0;
-        lastScrollIndex = 0;
-        updateSlider();
-        handleScrollDriver();
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        applyFilter(filter);
       });
     });
 
     // Hash navigation listener (header links: Websites, Web Apps, Apps)
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'websites' || hash === 'webapps' || hash === 'apps') {
-        const matchingTab = document.querySelector(`.slider-tab[data-filter="${hash}"]`);
-        if (matchingTab) {
-          matchingTab.click();
+      if (['websites', 'webapps', 'apps'].includes(hash)) {
+        const matchingBtn = document.querySelector(`.project-filter[data-filter="${hash}"]`);
+        if (matchingBtn) {
+          applyFilter(hash);
         }
       }
     };
 
     window.addEventListener('hashchange', handleHash);
     handleHash();
-
-    // 3D Interactive Mouse Tilt on Active Card
-    sliderStage.addEventListener('mousemove', (e) => {
-      const activeCard = sliderTrack.querySelector('.slider-card.is-active');
-      if (!activeCard) return;
-      const rect = activeCard.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const tiltX = ((y - centerY) / centerY) * -6;
-      const tiltY = ((x - centerX) / centerX) * 8;
-      activeCard.style.setProperty('--tilt-x', `${tiltX.toFixed(2)}deg`);
-      activeCard.style.setProperty('--tilt-y', `${tiltY.toFixed(2)}deg`);
-    });
-
-    sliderStage.addEventListener('mouseleave', () => {
-      const activeCard = sliderTrack.querySelector('.slider-card.is-active');
-      if (activeCard) {
-        activeCard.style.setProperty('--tilt-x', '0deg');
-        activeCard.style.setProperty('--tilt-y', '0deg');
-      }
-    });
-
-    // Touch Swipe support
-    let touchStartX = 0;
-    sliderStage.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
-
-    sliderStage.addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].clientX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 45) {
-        if (diff > 0) goTo(currentIndex + 1);
-        else goTo(currentIndex - 1);
-      }
-    }, { passive: true });
-
-    // Keyboard navigation
-    window.addEventListener('keydown', (e) => {
-      if (document.activeElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
-      if (e.key === 'ArrowLeft') goTo(currentIndex - 1);
-      if (e.key === 'ArrowRight') goTo(currentIndex + 1);
-    });
-
-    // ── 8. Scroll-Driven Showcase Interaction ──
-    const workScrollTrack = document.getElementById('workScrollTrack');
-    let lastScrollIndex = 0;
-    let isTicking = false;
-
-    const handleScrollDriver = () => {
-      if (!workScrollTrack) return;
-      if (filteredCards.length <= 1) {
-        workScrollTrack.classList.add('is-single');
-        return;
-      }
-      workScrollTrack.classList.remove('is-single');
-
-      const rect = workScrollTrack.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const scrollableDist = rect.height - windowHeight;
-      if (scrollableDist <= 0) return;
-
-      const progress = Math.max(0, Math.min(1, (56 - rect.top) / scrollableDist));
-      const targetIndex = Math.min(
-        filteredCards.length - 1,
-        Math.floor(progress * filteredCards.length)
-      );
-
-      if (targetIndex !== currentIndex && targetIndex !== lastScrollIndex) {
-        lastScrollIndex = targetIndex;
-        currentIndex = targetIndex;
-        updateSlider();
-      }
-    };
-
-    window.addEventListener('scroll', () => {
-      if (!isTicking) {
-        window.requestAnimationFrame(() => {
-          handleScrollDriver();
-          isTicking = false;
-        });
-        isTicking = true;
-      }
-    }, { passive: true });
-
-    // Initial setup
-    updateSlider();
-    handleScrollDriver();
   }
 
-  // ── 9. General Scroll-Reveal Observer for Sections ──
+  // ── 8. General Scroll-Reveal Observer for Sections ──
   const revealElements = document.querySelectorAll('.scroll-reveal');
   if (revealElements.length && 'IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
